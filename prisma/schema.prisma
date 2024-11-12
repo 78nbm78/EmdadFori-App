@@ -1,0 +1,41 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Users {
+    id          Int         @id @default(autoincrement())
+    email       String      @unique
+    password    String
+    mobile      String
+    role        RoleEnums   @default(APPLICANT)
+    expertId    Int?        @unique
+    expert      Experts?    @relation(fields: [expertId], references: [id])
+    applicantId Int?        @unique
+    applicant   Applicants? @relation(fields: [applicantId], references: [id])
+    isAdmin     Boolean     @default(false)
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+
+    @@index([expertId, applicantId, email])
+}
+
+enum RoleEnums {
+    ADMIN
+    EXPERT
+    APPLICANT
+}
+
+model Experts {
+    id    Int    @id @default(autoincrement())
+    users Users?
+}
+
+model Applicants {
+    id    Int    @id @default(autoincrement())
+    users Users?
+}
