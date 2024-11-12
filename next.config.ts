@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     DATABASE_URL: process.env.DATABASE_URL || "",
     NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL || "",
     NEXT_PUBLIC_JWT_SECRET: process.env.NEXT_PUBLIC_JWT_SECRET || "",
-  }
+  },
 };
 
 export default nextConfig;

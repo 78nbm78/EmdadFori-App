@@ -3,44 +3,44 @@ import { jwtDecode } from "jwt-decode";
 import { getCookieByKey } from "./cookie";
 
 interface IProps {
-    isAdmin: boolean;
-    userId: string;
-    role: "ADMIN" | "EXPERT" | "APPLICANT";
+  isAdmin: boolean;
+  userId: string;
+  role: "ADMIN" | "EXPERT" | "APPLICANT";
 }
 
 export const onCreateJWT = async ({ isAdmin, userId, role }: IProps) => {
-    // Create JWT Token
-    const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
-    const alg = "HS256";
+  // Create JWT Token
+  const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+  const alg = "HS256";
 
-    // Include additional information in the payload
-    const payload = {
-        userId,
-        isAdmin,
-        role,
-    };
+  // Include additional information in the payload
+  const payload = {
+    userId,
+    isAdmin,
+    role,
+  };
 
-    const jwt = await new jose.SignJWT(payload)
-        .setProtectedHeader({ alg })
-        .setExpirationTime("24h")
-        .sign(secret);
+  const jwt = await new jose.SignJWT(payload)
+    .setProtectedHeader({ alg })
+    .setExpirationTime("24h")
+    .sign(secret);
 
-    return jwt;
+  return jwt;
 };
 
 export type IDecodedToken = {
-    userId: string;
-    isAdmin: boolean;
-    role: "ADMIN" | "EXPERT" | "APPLICANT";
-    exp: number;
+  userId: string;
+  isAdmin: boolean;
+  role: "ADMIN" | "EXPERT" | "APPLICANT";
+  exp: number;
 };
 
 export const JwtDecodedValue = async () => {
-    const tokenValue = await getCookieByKey("token");
+  const tokenValue = await getCookieByKey("token");
 
-    if (!tokenValue) return null;
+  if (!tokenValue) return null;
 
-    const decoded: IDecodedToken = jwtDecode(tokenValue);
+  const decoded: IDecodedToken = jwtDecode(tokenValue);
 
-    return decoded;
+  return decoded;
 };

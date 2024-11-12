@@ -3,33 +3,33 @@
 import { cookies } from "next/headers";
 
 export async function getCookieByKey(
-    name: string,
+  name: string,
 ): Promise<string | undefined> {
-    return (await cookies()).get(name)?.value;
+  return (await cookies()).get(name)?.value;
 }
 
 export async function getAllCookies() {
-    return (await cookies()).getAll();
+  return (await cookies()).getAll();
 }
 
 interface IKeyAndValue {
-    key: string;
-    value: string;
+  key: string;
+  value: string;
 }
 export async function setCookieByKeyAndValue({
-    key,
-    value,
+  key,
+  value,
 }: IKeyAndValue): Promise<void> {
-    // (await cookies()).set(key, value);
-    (await cookies()).set({
-        name: key,
-        value: value,
-        httpOnly: true,
-        secure: true,
-        sameSite: "strict",
-    });
+  // (await cookies()).set(key, value);
+  (await cookies()).set({
+    name: key,
+    value: value,
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+  });
 }
 
 export async function deleteCookieByKey(key: string): Promise<void> {
-    (await cookies()).delete(key);
+  (await cookies()).delete(key);
 }

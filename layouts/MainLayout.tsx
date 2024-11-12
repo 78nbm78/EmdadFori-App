@@ -1,19 +1,17 @@
 import { ReactNode } from "react";
 
 interface IProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 const MainLayout: React.FC<IProps> = ({ children }) => {
-    return (
-        <>
-            <header></header>
-            <main>
-                {children}
-            </main>
-            <footer></footer>
-        </>
-    );
-}
+  return (
+    <>
+      <header></header>
+      <main>{children}</main>
+      <footer></footer>
+    </>
+  );
+};
 
 export default MainLayout;

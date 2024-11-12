@@ -1,9 +1,5 @@
 const AuthPage = () => {
-    return (
-        <>
-            Auth Page
-        </>
-    );
-}
- 
+  return <>Auth Page</>;
+};
+
 export default AuthPage;

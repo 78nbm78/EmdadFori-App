@@ -1,7 +1,5 @@
 const AdminPage = () => {
-    return (
-        <>Admin protected page</>
-    );
-}
+  return <>Admin protected page</>;
+};
 
 export default AdminPage;
