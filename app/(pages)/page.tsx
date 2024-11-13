@@ -1,11 +1,14 @@
 import MainLayout from "@/layouts/MainLayout";
+import HomeAbout from "./_components/HomeAbout";
+import HomeServices from "./_components/HomeServices";
+import HomeIntro from "./_components/HomeIntro";
 
 const HomePage = () => {
   return (
     <MainLayout>
-      <section className="wrapper">
-        <div className="container">Hello from HomePage</div>
-      </section>
+      <HomeIntro />
+      <HomeAbout />
+      <HomeServices />
     </MainLayout>
   );
 };

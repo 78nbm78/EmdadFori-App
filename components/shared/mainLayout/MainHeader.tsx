@@ -13,7 +13,7 @@ const MainHeader = () => {
               <ul className="flex items-center gap-8">
                 <li>
                   <Link
-                    className="text-slate-700 transition hover:text-primary"
+                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
                     href="/"
                   >
                     امداد فوری
@@ -21,7 +21,7 @@ const MainHeader = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-slate-700 transition hover:text-primary"
+                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
                     href="/"
                   >
                     خدمات
@@ -29,7 +29,7 @@ const MainHeader = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-slate-700 transition hover:text-primary"
+                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
                     href="/"
                   >
                     برندها
@@ -37,7 +37,7 @@ const MainHeader = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-slate-700 transition hover:text-primary"
+                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
                     href="/"
                   >
                     اخبار و مقالات
@@ -45,7 +45,7 @@ const MainHeader = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-slate-700 transition hover:text-primary"
+                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
                     href="/"
                   >
                     درباره ما
@@ -53,7 +53,7 @@ const MainHeader = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-slate-700 transition hover:text-primary"
+                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
                     href="/"
                   >
                     تماس با ما

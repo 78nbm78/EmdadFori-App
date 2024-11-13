@@ -1,3 +1,4 @@
+import MainFooter from "@/components/shared/mainLayout/MainFooter";
 import MainHeader from "@/components/shared/mainLayout/MainHeader";
 import { ReactNode } from "react";
 
@@ -10,7 +11,7 @@ const MainLayout: React.FC<IProps> = ({ children }) => {
     <div className="flex flex-col">
       <MainHeader />
       <main className="grow">{children}</main>
-      <footer></footer>
+      <MainFooter />
     </div>
   );
 };
