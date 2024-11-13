@@ -13,6 +13,10 @@ export default {
       screens: {
         xs: "420px", // => @media (min-width: 420px) { ... }
       },
+      colors: {
+        primary: "#f27128",
+        secondary: "#ffc326",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

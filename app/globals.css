@@ -3,11 +3,37 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.75;
+  text-align: right;
 }
+
+/* body * {
+  direction: rtl;
+} */
 
 @layer base {
   :root {
-    --radius: 0.5rem;
+    --primary-color: #f27128;
+    --secondary-color: #ffc326;
   }
+
+  .container {
+    @apply max-w-5xl mx-auto px-4;
+  }
+
+  .wrapper {
+    @apply py-6 sm:py-8 lg:py-10 xl:py-12;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

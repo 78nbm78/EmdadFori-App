@@ -1,3 +1,4 @@
+import MainHeader from "@/components/shared/mainLayout/MainHeader";
 import { ReactNode } from "react";
 
 interface IProps {
@@ -6,11 +7,11 @@ interface IProps {
 
 const MainLayout: React.FC<IProps> = ({ children }) => {
   return (
-    <>
-      <header></header>
-      <main>{children}</main>
+    <div className="flex flex-col">
+      <MainHeader />
+      <main className="grow">{children}</main>
       <footer></footer>
-    </>
+    </div>
   );
 };
 
