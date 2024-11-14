@@ -8,7 +8,7 @@ interface IProps {
 
 const MainLayout: React.FC<IProps> = ({ children }) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-[100svh]">
       <MainHeader />
       <main className="grow">{children}</main>
       <MainFooter />

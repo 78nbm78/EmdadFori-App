@@ -1,69 +1,38 @@
 import Link from "next/link";
 import HeaderLogin from "./HeaderLogin";
+import Image from "next/image";
+import LogoImage from "@/public/images/logo.png";
+import { Button } from "@/components/ui/button";
+import { PhoneCallIcon } from "lucide-react";
+import MenuItems from "./MenuItems";
 
 const MainHeader = () => {
   return (
-    <header className="sticky top-0 w-full py-4 shadow-lg bg-white">
+    <header className="sticky z-10 top-0 w-full py-4 shadow-lg bg-white">
       <div className="container">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-16">
-            <Link href="/">Logo</Link>
+          <Link href="/">
+            <Image
+              src={LogoImage}
+              width={100}
+              alt="امداد فوری"
+              title="امداد فوری"
+            />
+          </Link>
 
-            <nav>
-              <ul className="flex items-center gap-8">
-                <li>
-                  <Link
-                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
-                    href="/"
-                  >
-                    امداد فوری
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
-                    href="/"
-                  >
-                    خدمات
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
-                    href="/"
-                  >
-                    برندها
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
-                    href="/"
-                  >
-                    اخبار و مقالات
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
-                    href="/"
-                  >
-                    درباره ما
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-slate-700 font-medium border-b border-transparent transition hover:text-primary hover:border-primary"
-                    href="/"
-                  >
-                    تماس با ما
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+          <nav className="grow md:flex md:justify-center">
+            <MenuItems />
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <Button variant="success" className="text-base" asChild>
+              <a href="tel:+98" rel="noopener noreferrer nofollow" dir="ltr">
+                <PhoneCallIcon className="scale-110" />
+                021 123 45 67
+              </a>
+            </Button>
+            <HeaderLogin />
           </div>
-
-          <HeaderLogin />
         </div>
       </div>
     </header>

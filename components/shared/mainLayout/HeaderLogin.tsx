@@ -9,7 +9,7 @@ const HeaderLogin = () => {
 
   return (
     <Button
-      variant="secondary"
+      variant="default"
       className="w-11 h-10 p-0 px-2"
       onClick={() => router.push("/auth")}
     >

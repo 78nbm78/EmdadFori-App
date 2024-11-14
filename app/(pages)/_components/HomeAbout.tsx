@@ -1,10 +1,11 @@
 import Image from "next/image";
 import TruckImage from "@/public/images/truck.png";
 import { Button } from "@/components/ui/button";
+import { CarFrontIcon } from "lucide-react";
 
 const HomeAbout = () => {
   return (
-    <section className="wrapper">
+    <section className="wrapper bg-white">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Image src={TruckImage} alt="" title="" />
@@ -13,6 +14,9 @@ const HomeAbout = () => {
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black mb-5">
               چرا امداد فوری؟
             </h2>
+
+            <hr className="custom-hr" />
+
             <p className="indent-6">
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
               استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
@@ -28,7 +32,10 @@ const HomeAbout = () => {
 
             <div className="flex items-center gap-4 !mt-8">
               <Button variant="primary">درباره ما</Button>
-              <Button variant="secondary">درخواست امداد خودرو</Button>
+              <Button variant="secondary" className="gap-3">
+                درخواست آنی امداد خودرو
+                <CarFrontIcon className="scale-125" />
+              </Button>
             </div>
           </div>
         </div>

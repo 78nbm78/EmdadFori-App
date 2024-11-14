@@ -2,9 +2,12 @@ const HomeServices = () => {
   return (
     <section className="wrapper bg-[#f5f5f5]">
       <div className="container">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black mb-8 md:mb-10 text-center">
-          خدمات امداد فوری
-        </h2>
+        <div className="flex flex-col items-center mb-8 md:mb-10">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black text-center">
+            خدمات امداد فوری
+          </h2>
+          <hr className="custom-hr" />
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10">
           <div className="flex flex-col justify-center items-center text-center p-4 border border-transparent rounded-xl transition hover:border-primary">
             <span className="mb-6">ICON</span>

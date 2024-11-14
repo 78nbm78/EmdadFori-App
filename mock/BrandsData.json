@@ -1,0 +1,237 @@
+[
+  {
+    "id": 1,
+    "label": "بنز",
+    "icon": "/images/brands/benz.svg"
+  },
+  {
+    "id": 2,
+    "label": "بسترن",
+    "icon": "/images/brands/bestern.svg"
+  },
+  {
+    "id": 3,
+    "label": "بی ام و",
+    "icon": "/images/brands/bmw.svg"
+  },
+  {
+    "id": 4,
+    "label": "برلیانس",
+    "icon": "/images/brands/brilliance.svg"
+  },
+  {
+    "id": 5,
+    "label": "بی وای دی (BYD)",
+    "icon": "/images/brands/byd.svg"
+  },
+  {
+    "id": 6,
+    "label": "چانگان",
+    "icon": "/images/brands/changan.svg"
+  },
+  {
+    "id": 7,
+    "label": "چری",
+    "icon": "/images/brands/cherry.svg"
+  },
+  {
+    "id": 8,
+    "label": "سیتروئن",
+    "icon": "/images/brands/citroen.svg"
+  },
+  {
+    "id": 9,
+    "label": "دنا",
+    "icon": "/images/brands/dena.svg"
+  },
+  {
+    "id": 10,
+    "label": "دانگ فنگ",
+    "icon": "/images/brands/dong-feng.svg"
+  },
+  {
+    "id": 11,
+    "label": "دی اس (DS)",
+    "icon": "/images/brands/ds.svg"
+  },
+  {
+    "id": 12,
+    "label": "فیدلیتی",
+    "icon": "/images/brands/fidelity.svg"
+  },
+  {
+    "id": 13,
+    "label": "فونیکس",
+    "icon": "/images/brands/fownix.svg"
+  },
+  {
+    "id": 14,
+    "label": "جیلی",
+    "icon": "/images/brands/geely.svg"
+  },
+  {
+    "id": 15,
+    "label": "هاوال",
+    "icon": "/images/brands/haval.svg"
+  },
+  {
+    "id": 16,
+    "label": "هایما",
+    "icon": "/images/brands/hayma.svg"
+  },
+  {
+    "id": 17,
+    "label": "هوندا",
+    "icon": "/images/brands/honda.svg"
+  },
+  {
+    "id": 18,
+    "label": "هیوندای",
+    "icon": "/images/brands/hyundai.svg"
+  },
+  {
+    "id": 19,
+    "label": "اینفینیتی",
+    "icon": "/images/brands/infinitie.svg"
+  },
+  {
+    "id": 20,
+    "label": "جک",
+    "icon": "/images/brands/jack.svg"
+  },
+  {
+    "id": 21,
+    "label": "جیپ",
+    "icon": "/images/brands/jeep.svg"
+  },
+  {
+    "id": 22,
+    "label": "کیا",
+    "icon": "/images/brands/kia.svg"
+  },
+  {
+    "id": 23,
+    "label": "کی ام سی (KMC)",
+    "icon": "/images/brands/kmc.svg"
+  },
+  {
+    "id": 24,
+    "label": "لاماری",
+    "icon": "/images/brands/lamarry.svg"
+  },
+  {
+    "id": 25,
+    "label": "لکسوس",
+    "icon": "/images/brands/lexus.svg"
+  },
+  {
+    "id": 26,
+    "label": "لیفان",
+    "icon": "/images/brands/lifan.svg"
+  },
+  {
+    "id": 27,
+    "label": "مزدا",
+    "icon": "/images/brands/mazda.svg"
+  },
+  {
+    "id": 28,
+    "label": "ام جی (MG)",
+    "icon": "/images/brands/mg.svg"
+  },
+  {
+    "id": 29,
+    "label": "میتسوبیشی",
+    "icon": "/images/brands/mitsubishi.svg"
+  },
+  {
+    "id": 30,
+    "label": "ام وی ام (MVM)",
+    "icon": "/images/brands/mvm.svg"
+  },
+  {
+    "id": 31,
+    "label": "نیسان",
+    "icon": "/images/brands/nissan.svg"
+  },
+  {
+    "id": 32,
+    "label": "پژو",
+    "icon": "/images/brands/peugeot.svg"
+  },
+  {
+    "id": 33,
+    "label": "پورشه",
+    "icon": "/images/brands/porsche.svg"
+  },
+  {
+    "id": 34,
+    "label": "پراید",
+    "icon": "/images/brands/pride.svg"
+  },
+  {
+    "id": 35,
+    "label": "پروتون",
+    "icon": "/images/brands/proton.svg"
+  },
+  {
+    "id": 36,
+    "label": "کوییک",
+    "icon": "/images/brands/quick.svg"
+  },
+  {
+    "id": 37,
+    "label": "رنو",
+    "icon": "/images/brands/renault.svg"
+  },
+  {
+    "id": 38,
+    "label": "ریسپکت",
+    "icon": "/images/brands/respect.svg"
+  },
+  {
+    "id": 39,
+    "label": "رانا",
+    "icon": "/images/brands/runna.svg"
+  },
+  {
+    "id": 40,
+    "label": "ساینا",
+    "icon": "/images/brands/saina.svg"
+  },
+  {
+    "id": 41,
+    "label": "سمند",
+    "icon": "/images/brands/samand.svg"
+  },
+  {
+    "id": 42,
+    "label": "شاهین",
+    "icon": "/images/brands/shahin.svg"
+  },
+  {
+    "id": 43,
+    "label": "سانگ یانگ",
+    "icon": "/images/brands/ssang-yong.svg"
+  },
+  {
+    "id": 44,
+    "label": "تارا",
+    "icon": "/images/brands/tara.svg"
+  },
+  {
+    "id": 45,
+    "label": "تیبا",
+    "icon": "/images/brands/tiba.svg"
+  },
+  {
+    "id": 46,
+    "label": "تویوتا",
+    "icon": "/images/brands/toyota.svg"
+  },
+  {
+    "id": 47,
+    "label": "فولکس",
+    "icon": "/images/brands/volks-wagen.svg"
+  }
+]
