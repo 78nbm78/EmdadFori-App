@@ -1,11 +1,10 @@
 import MainLayout from "@/layouts/MainLayout";
+import HomeBrands from "../_components/HomeBrands";
 
 const BrandsPage = () => {
   return (
     <MainLayout>
-      <section className="wrapper">
-        <div className="container">BrandsPage</div>
-      </section>
+      <HomeBrands />
     </MainLayout>
   );
 };

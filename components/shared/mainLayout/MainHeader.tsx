@@ -8,9 +8,9 @@ import MenuItems from "./MenuItems";
 
 const MainHeader = () => {
   return (
-    <header className="sticky z-10 top-0 w-full py-4 shadow-lg bg-white">
+    <header className="sticky z-10 top-0 w-full py-4 md:py-0 shadow-lg bg-white">
       <div className="container">
-        <div className="flex items-center justify-between">
+        <div className="relative flex items-center justify-between">
           <Link href="/">
             <Image
               src={LogoImage}
