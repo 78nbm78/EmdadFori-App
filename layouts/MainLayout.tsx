@@ -1,5 +1,5 @@
-import MainFooter from "@/components/shared/mainLayout/MainFooter";
-import MainHeader from "@/components/shared/mainLayout/MainHeader";
+import MainFooter from "@/components/shared/MainFooter";
+import MainHeader from "@/components/shared/MainHeader";
 import { ReactNode } from "react";
 
 interface IProps {

@@ -12,6 +12,11 @@ const iranSans = localFont({
   variable: "--body-font-family",
   src: [
     {
+      path: "./assets/fonts/IRANSansWebFaNum-Black.woff",
+      weight: "900",
+      style: "normal",
+    },
+    {
       path: "./assets/fonts/IRANSansWebFaNum-Bold.woff",
       weight: "700",
       style: "normal",

@@ -21,7 +21,7 @@ model Users {
     createdAt   DateTime    @default(now())
     updatedAt   DateTime    @updatedAt
 
-    @@index([expertId, applicantId, email])
+    @@index([expertId, applicantId, mobile, email])
 }
 
 enum RoleEnums {
@@ -38,4 +38,69 @@ model Experts {
 model Applicants {
     id    Int    @id @default(autoincrement())
     users Users?
+}
+
+model Services {
+    id          Int        @id @default(autoincrement())
+    title       String     @unique
+    description String
+    slug        String     @unique
+    thumbnail   String?
+    googleTitle String?
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+    content     String?    @db.Text
+    comments    Comments[]
+
+    @@index([slug, id])
+}
+
+model Brands {
+    id          Int        @id @default(autoincrement())
+    title       String     @unique
+    description String
+    slug        String     @unique
+    thumbnail   String?
+    googleTitle String?
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+    content     String?    @db.Text
+    comments    Comments[]
+
+    @@index([slug, id])
+}
+
+model Blogs {
+    id          Int        @id @default(autoincrement())
+    title       String     @unique
+    googleTitle String?
+    description String
+    slug        String     @unique
+    thumbnail   String?
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+    content     String?    @db.Text
+    comments    Comments[]
+
+    @@index([slug, id])
+}
+
+model Comments {
+    id          Int       @id @default(autoincrement())
+    username    String
+    phoneNumber String?
+    score       Int?
+    content     String?
+    serviceId   Int?
+    service     Services? @relation(fields: [serviceId], references: [id])
+    blogId      Int?
+    blog        Blogs?    @relation(fields: [blogId], references: [id])
+    brandId     Int?
+    brand       Brands?   @relation(fields: [brandId], references: [id])
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    isPublished Boolean   @default(false)
+    adminAnswer String?
+
+    @@index([blogId, brandId, serviceId])
 }

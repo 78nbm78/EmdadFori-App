@@ -3,6 +3,7 @@ import HomeAbout from "./_components/HomeAbout";
 import HomeServices from "./_components/HomeServices";
 import HomeIntro from "./_components/HomeIntro";
 import HomeBrands from "./_components/HomeBrands";
+import HomeBlog from "./_components/HomeBlog";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <HomeAbout />
       <HomeServices />
       <HomeBrands />
+      <HomeBlog />
     </MainLayout>
   );
 };

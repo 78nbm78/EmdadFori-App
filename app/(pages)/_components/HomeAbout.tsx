@@ -2,6 +2,7 @@ import Image from "next/image";
 import TruckImage from "@/public/images/truck.png";
 import { Button } from "@/components/ui/button";
 import { CarFrontIcon } from "lucide-react";
+import Link from "next/link";
 
 const HomeAbout = () => {
   return (
@@ -31,7 +32,9 @@ const HomeAbout = () => {
             </p>
 
             <div className="flex items-center gap-4 !mt-8">
-              <Button variant="primary">درباره ما</Button>
+              <Button variant="primary" asChild>
+                <Link href="/about">درباره ما</Link>
+              </Button>
               <Button variant="secondary" className="gap-3">
                 درخواست آنی امداد خودرو
                 <CarFrontIcon className="scale-125" />
