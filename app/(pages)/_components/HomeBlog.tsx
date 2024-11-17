@@ -11,31 +11,39 @@ const HomeBlog = () => {
           <hr className="custom-hr !mb-0" />
         </div>
 
-        <div className="grid grid-cols-4 gap-6">
-          <BlogCard
-            slug="/blog/sth"
-            thumbnail={null}
-            title="Blog 1"
-            updatedAt="2024-11-12T13:33:36.195Z"
-          />
-          <BlogCard
-            slug="/blog/sth"
-            thumbnail={null}
-            title="Blog 2"
-            updatedAt="2024-11-12T13:33:36.195Z"
-          />
-          <BlogCard
-            slug="/blog/sth"
-            thumbnail={null}
-            title="Blog 3"
-            updatedAt="2024-11-12T13:33:36.195Z"
-          />
-          <BlogCard
-            slug="/blog/sth"
-            thumbnail={null}
-            title="Blog 4"
-            updatedAt="2024-11-12T13:33:36.195Z"
-          />
+        <div className="whitespace-nowrap overflow-auto lg:overflow-visible pb-4 lg:pb-0 lg:grid lg:grid-cols-4 lg:gap-6">
+          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
+            <BlogCard
+              slug="/blog/sth"
+              thumbnail={null}
+              title="Blog 1"
+              updatedAt="2024-11-12T13:33:36.195Z"
+            />
+          </div>
+          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
+            <BlogCard
+              slug="/blog/sth"
+              thumbnail={null}
+              title="Blog 2"
+              updatedAt="2024-11-12T13:33:36.195Z"
+            />
+          </div>
+          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
+            <BlogCard
+              slug="/blog/sth"
+              thumbnail={null}
+              title="Blog 3"
+              updatedAt="2024-11-12T13:33:36.195Z"
+            />
+          </div>
+          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
+            <BlogCard
+              slug="/blog/sth"
+              thumbnail={null}
+              title="Blog 4"
+              updatedAt="2024-11-12T13:33:36.195Z"
+            />
+          </div>
         </div>
       </div>
     </section>

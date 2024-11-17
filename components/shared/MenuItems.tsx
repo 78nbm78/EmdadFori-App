@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ServicesData from "@/mock/ServicesData.json";
-import BrandsData from "@/mock/BrandsData.json";
 import { ChevronDown } from "lucide-react";
+// import BrandsData from "@/mock/BrandsData.json";
 
 const MenuItems = () => {
   const pathname = usePathname();
@@ -50,16 +50,16 @@ const MenuItems = () => {
           ))}
         </ul>
       </li>
-      <li className="group">
+      <li>
         <Link
-          className={`inline-flex items-center gap-1 py-6 px-3 font-medium border-b-2 border-transparent transition group-hover:text-primary group-hover:border-primary ${pathname === "/brands" ? "text-primary border-b-primary" : "text-slate-700"}`}
+          className={`inline-flex items-center gap-1 py-6 px-3 font-medium border-b-2 border-transparent transition hover:text-primary hover:border-primary ${pathname === "/brands" ? "text-primary border-b-primary" : "text-slate-700"}`}
           href="/brands"
         >
           برندها
-          <ChevronDown className="-me-1" size={16} />
+          {/* <ChevronDown className="-me-1" size={16} /> */}
         </Link>
 
-        <ul className="transition invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute top-full start-0 w-full bg-white rounded-b-xl grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 shadow-md p-4 md:p-6 border-t border-t-slate-200 gap-6 max-h-[calc(100svh-100px)] overflow-auto">
+        {/* <ul className="transition invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute top-full start-0 w-full bg-white rounded-b-xl grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 shadow-md p-4 md:p-6 border-t border-t-slate-200 gap-6 max-h-[calc(100svh-100px)] overflow-auto">
           {BrandsData.map((brand) => (
             <li className="text-center" key={brand.id}>
               <Link
@@ -78,7 +78,7 @@ const MenuItems = () => {
               </Link>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </li>
       <li>
         <Link

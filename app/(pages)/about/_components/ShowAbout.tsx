@@ -1,19 +1,24 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
 import TruckImage from "@/public/images/truck.png";
 import { CarFrontIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const HomeAbout = () => {
+const ShowAbout = () => {
   return (
     <section className="wrapper bg-white">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Image src={TruckImage} alt="" title="" />
+          <Image
+            src={TruckImage}
+            alt="درباره امداد فوری"
+            title="درباره امداد فوری"
+          />
 
           <div className="text-slate-500 text-justify space-y-3">
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black mb-5">
-              چرا امداد فوری؟
+              درباره امداد فوری
             </h2>
 
             <hr className="custom-hr" />
@@ -32,10 +37,11 @@ const HomeAbout = () => {
             </p>
 
             <div className="flex items-center gap-4 !mt-8">
-              <Button variant="primary" asChild>
-                <Link href="/about">درباره ما</Link>
-              </Button>
-              <Button variant="secondary" className="gap-3">
+              <Button
+                variant="secondary"
+                className="gap-3"
+                onClick={() => console.log("do sth...")}
+              >
                 درخواست آنی امداد خودرو
                 <CarFrontIcon className="scale-125" />
               </Button>
@@ -47,4 +53,4 @@ const HomeAbout = () => {
   );
 };
 
-export default HomeAbout;
+export default ShowAbout;

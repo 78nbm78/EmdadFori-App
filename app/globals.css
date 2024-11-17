@@ -5,6 +5,19 @@
 body {
   line-height: 1.75;
   text-align: right;
+  font-size: 16px;
+}
+
+@media (max-width: 992px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    font-size: 14px;
+  }
 }
 
 /* body * {
@@ -26,7 +39,11 @@ body {
   }
 
   .wrapper {
-    @apply py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20;
+    @apply py-12 sm:py-14 md:py-16 xl:py-20;
+  }
+
+  .overlay {
+    @apply fixed top-0 start-0 w-full h-full z-[9] bg-black/50 backdrop-blur-sm;
   }
 }
 

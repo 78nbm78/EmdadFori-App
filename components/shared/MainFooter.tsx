@@ -29,7 +29,7 @@ const MainFooter = () => {
       </section>
 
       <footer className="relative bg-gradient-to-b from-[#2c2c2c] to-[#1c1c1c]">
-        <div className="absolute left-0 -top-32 h-40 sm:-top-40 sm:h-48 lg:-top-64 lg:h-72 w-full pointer-events-none bg-[url('/images/footer-wave.svg')] bg-no-repeat bg-center bg-contain -scale-x-100"></div>
+        <div className="absolute left-0 -top-32 h-40 sm:-top-40 sm:h-48 lg:-top-64 lg:h-72 w-full pointer-events-none bg-[url('/images/footer-wave.svg')] bg-no-repeat bg-center bg-cover -scale-x-100"></div>
         <div className="container m-auto relative">
           <div className="absolute right-4 -top-16 sm:-top-24 lg:-top-36">
             <Link href="/">
@@ -98,52 +98,82 @@ const MainFooter = () => {
               <p className="font-bold text-white mb-4">مقاله های مفید</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۱
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۲
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۳
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۴
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۵
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۶
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۷
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۸
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۹
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog/sth" className="font-light text-white/80">
+                  <Link
+                    href="/blog/sth"
+                    className="font-light text-white/80 transition hover:text-primary"
+                  >
                     مقاله مفید شماره ۱۰
                   </Link>
                 </li>
@@ -183,16 +213,15 @@ const MainFooter = () => {
                     className="flex items-center text-white"
                   >
                     <Mail className="min-w-6 text-center me-2 sm:me-3" />
-                    <span className="[direction:ltr]">
-                      info@emdadfori.com
-                    </span>
+                    <span className="[direction:ltr]">info@emdadfori.com</span>
                   </a>
                 </li>
                 <li>
                   <p className="flex text-white">
                     <MapPin className="min-w-6 text-center me-2 sm:me-3" />
                     <span>
-                      تهران - منیریه - ادامه‌ی آدرس شما - در این قسمت - قرار خواهد گرفت
+                      تهران - منیریه - ادامه‌ی آدرس شما - در این قسمت - قرار
+                      خواهد گرفت
                     </span>
                   </p>
                 </li>

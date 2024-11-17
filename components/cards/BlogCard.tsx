@@ -13,7 +13,7 @@ const BlogCard = ({ title, slug, thumbnail, updatedAt }: IBlog) => {
   return (
     <Link
       href={slug}
-      className={`relative block w-full h-fit overflow-hidden rounded-xl shadow-lg bg-white dark:bg-slate-700 pb-20`}
+      className={`relative block w-full h-fit overflow-hidden rounded-xl border border-slate-100 shadow-lg bg-white dark:bg-slate-700 pb-20`}
     >
       <Image
         src={thumbnail || "/images/default-cover.jpg"}
