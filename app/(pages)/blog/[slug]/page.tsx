@@ -16,11 +16,11 @@ interface IProps {
 //     openGraph: {
 //       title: blog?.data?.googleTitle || blog?.data?.title,
 //       description: blog?.data?.description,
-//       url: `${process?.env?.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
+//       url: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
 //       images: [blog?.data?.thumbnail || "/images/thumbnail.jpg"],
 //     },
 //     alternates: {
-//       canonical: `${process?.env?.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
+//       canonical: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
 //     },
 //   }
 // }
@@ -41,7 +41,7 @@ const SingleBlogPage: React.FC<IProps> = async ({ params }) => {
   //   "@type": "BlogPosting",
   //   mainEntityOfPage: {
   //     "@type": "WebPage",
-  //     "@id": `${process?.env?.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`
+  //     "@id": `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`
   //   },
   //   headline: `${blog?.data?.googleTitle || blog?.data?.title}`,
   //   description: `${blog?.data?.description}`,
@@ -49,14 +49,14 @@ const SingleBlogPage: React.FC<IProps> = async ({ params }) => {
   //   author: {
   //     "@type": "Organization",
   //     name: `امداد فوری`,
-  //     url: `${process?.env?.NEXT_PUBLIC_URL}`
+  //     url: `${process.env.NEXT_PUBLIC_URL}`
   //   },
   //   publisher: {
   //     "@type": "Organization",
   //     name: `امداد فوری`,
   //     logo: {
   //       "@type": "ImageObject",
-  //       url: `${process?.env?.NEXT_PUBLIC_URL}/images/logo.svg`
+  //       url: `${process.env.NEXT_PUBLIC_URL}/images/logo.svg`
   //     }
   //   },
   //   datePublished: `${blog?.data?.createdAt}`,

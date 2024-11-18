@@ -16,11 +16,11 @@ interface IProps {
 //     openGraph: {
 //       title: service?.data?.googleTitle || service?.data?.title,
 //       description: service?.data?.description,
-//       url: `${process?.env?.NEXT_PUBLIC_URL}/service/${service?.data?.slug}`,
+//       url: `${process.env.NEXT_PUBLIC_URL}/service/${service?.data?.slug}`,
 //       images: [service?.data?.thumbnail || "/images/thumbnail.jpg"],
 //     },
 //     alternates: {
-//       canonical: `${process?.env?.NEXT_PUBLIC_URL}/service/${service?.data?.slug}`,
+//       canonical: `${process.env.NEXT_PUBLIC_URL}/service/${service?.data?.slug}`,
 //     },
 //   }
 // }

@@ -35,7 +35,11 @@ export type IDecodedToken = {
   exp: number;
 };
 
-export const JwtDecodedValue = async ({ tokenValue }: { tokenValue: string | undefined }) => {
+export const JwtDecodedValue = async ({
+  tokenValue,
+}: {
+  tokenValue: string | undefined;
+}) => {
   if (!tokenValue) return null;
 
   const decoded: IDecodedToken = jwtDecode(tokenValue);

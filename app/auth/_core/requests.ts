@@ -106,7 +106,6 @@ export const ApplicantLoginAPI = async ({
 //     }
 // };
 
-
 export const AdminLoginAPI = async ({
   mobile,
   password,

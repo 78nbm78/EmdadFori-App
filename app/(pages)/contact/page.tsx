@@ -6,7 +6,7 @@ import { Clock, MapPin, PhoneCall, TabletSmartphone } from "lucide-react";
 export const metadata = {
   title: "تماس با ما | امداد فوری",
   alternates: {
-    canonical: `${process?.env?.NEXT_PUBLIC_URL}/contact`,
+    canonical: `${process.env.NEXT_PUBLIC_URL}/contact`,
   },
 };
 
