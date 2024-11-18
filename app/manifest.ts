@@ -16,22 +16,22 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/x-icon",
       },
       {
-        src: `${process?.env?.NEXT_PUBLIC_URL}/images/icon-192x192.png`,
+        src: `${process?.env?.NEXT_PUBLIC_URL}/images/meta/icon-192x192.png`,
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: `${process?.env?.NEXT_PUBLIC_URL}/images/icon-256x256.png`,
+        src: `${process?.env?.NEXT_PUBLIC_URL}/images/meta/icon-256x256.png`,
         sizes: "256x256",
         type: "image/png",
       },
       {
-        src: `${process?.env?.NEXT_PUBLIC_URL}/images/icon-384x384.png`,
+        src: `${process?.env?.NEXT_PUBLIC_URL}/images/meta/icon-384x384.png`,
         sizes: "384x384",
         type: "image/png",
       },
       {
-        src: `${process?.env?.NEXT_PUBLIC_URL}/images/icon-512x512.png`,
+        src: `${process?.env?.NEXT_PUBLIC_URL}/images/meta/icon-512x512.png`,
         sizes: "512x512",
         type: "image/png",
       },

@@ -81,7 +81,7 @@ const HomeIntro = () => {
       </Swiper>
 
       <div className="flex flex-wrap">
-        <div className="w-1/2 order-2 md:order-1 md:flex-1 border-b-2 border-transparent xs:text-base bg-green-500 p-3 md:p-6 text-center flex items-center gap-2 justify-center flex-col sm:flex-row">
+        <div className="w-1/2 order-2 md:order-1 md:flex-1 border-b-2 border-transparent xs:text-base bg-green-500 p-3 md:p-6 text-center flex items-center gap-1 sm:gap-2 justify-center flex-col sm:flex-row">
           <span className="w-11 h-11 rounded-full bg-black/15 inline-flex items-center justify-center shrink-0">
             <PhoneCallIcon size={24} />
           </span>
@@ -97,7 +97,7 @@ const HomeIntro = () => {
             ۰۲۱ <span className="font-bold">۱۲۳ ۴۵ ۶۷</span>
           </a>
         </div>
-        <div className="w-1/2 order-3 md:order-3 md:flex-1 border-b-2 border-transparent xs:text-base bg-green-500 p-3 md:p-6 text-center flex items-center gap-2 justify-center flex-col sm:flex-row">
+        <div className="w-1/2 order-3 md:order-3 md:flex-1 border-b-2 border-transparent xs:text-base bg-green-500 p-3 md:p-6 text-center flex items-center gap-1 sm:gap-2 justify-center flex-col sm:flex-row">
           <span className="w-11 h-11 rounded-full bg-black/15 inline-flex items-center justify-center shrink-0">
             <Clock3Icon size={24} />
           </span>

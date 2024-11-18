@@ -105,3 +105,27 @@ export const ApplicantLoginAPI = async ({
 //         console.log(error);
 //     }
 // };
+
+
+export const AdminLoginAPI = async ({
+  mobile,
+  password,
+}: ILoginInputs): Promise<ILoginResponse | undefined> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/admin/login`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ mobile, password }),
+      },
+    );
+
+    return await response.json();
+  } catch (error: unknown) {
+    console.log(error);
+  }
+};

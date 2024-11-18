@@ -35,9 +35,7 @@ export type IDecodedToken = {
   exp: number;
 };
 
-export const JwtDecodedValue = async () => {
-  const tokenValue = await getCookieByKey("token");
-
+export const JwtDecodedValue = async ({ tokenValue }: { tokenValue: string | undefined }) => {
   if (!tokenValue) return null;
 
   const decoded: IDecodedToken = jwtDecode(tokenValue);
