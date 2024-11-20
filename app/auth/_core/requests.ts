@@ -1,4 +1,9 @@
-import type { ILoginInputs, ILoginResponse } from "./interfaces";
+import type {
+  IExpertSignupInputs,
+  ILoginInputs,
+  ILoginResponse,
+  ISignupResponse,
+} from "./interfaces";
 
 export const ExpertLoginAPI = async ({
   mobile,
@@ -23,39 +28,39 @@ export const ExpertLoginAPI = async ({
   }
 };
 
-// export const DoctorSignupAPI = async ({
-//     email,
-//     password,
-//     first_name,
-//     last_name,
-//     experience,
-//     medical_code,
-// }: ISignupDoctorInputs): Promise<ISignupResponse | undefined> => {
-//     try {
-//         const response = await fetch(
-//             `${process.env.NEXT_PUBLIC_URL}/api/doctor/signup`,
-//             {
-//                 method: "POST",
-//                 headers: {
-//                     Accept: "application/json",
-//                     "Content-Type": "application/json",
-//                 },
-//                 body: JSON.stringify({
-//                     email,
-//                     password,
-//                     first_name,
-//                     last_name,
-//                     experience,
-//                     medical_code,
-//                 }),
-//             },
-//         );
+export const ExpertSignupAPI = async ({
+  firstName,
+  lastName,
+  mobile,
+  nationalCode,
+  password,
+  phoneNumber,
+}: IExpertSignupInputs): Promise<ISignupResponse | undefined> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/expert/signup`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          mobile,
+          nationalCode,
+          password,
+          phoneNumber,
+        }),
+      },
+    );
 
-//         return await response.json();
-//     } catch (error: unknown) {
-//         console.log(error);
-//     }
-// };
+    return await response.json();
+  } catch (error: unknown) {
+    console.log(error);
+  }
+};
 
 export const ApplicantLoginAPI = async ({
   mobile,

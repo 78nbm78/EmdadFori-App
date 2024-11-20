@@ -9,10 +9,11 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
+import { DateToJalali } from "@/utils/DateToJalali";
 
 export const columns: ColumnDef<IExpertList>[] = [
   {
@@ -24,7 +25,7 @@ export const columns: ColumnDef<IExpertList>[] = [
     header: "نام خانوادگی",
   },
   {
-    accessorKey: "natianalCode",
+    accessorKey: "nationalCode",
     header: "کد ملی",
   },
   {
@@ -32,16 +33,39 @@ export const columns: ColumnDef<IExpertList>[] = [
     header: "موبایل",
   },
   {
-    accessorKey: "jobsCount",
+    accessorKey: "createdAt",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          تعداد جاب ها
+          تاریخ ثبت نام
           <ArrowUpDown className="h-4 w-4" />
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const expert = row.original;
+      return <DateToJalali date={expert.createdAt} />;
+    },
+  },
+  {
+    accessorKey: "isActive",
+    header: ({ column }) => {
+      return (
+        <Button variant="ghost" onClick={() => column.toggleSorting()}>
+          وضعیت اکانت
+          <ArrowUpDown className="h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const expert = row.original;
+      return expert.isActive ? (
+        <Badge variant="success">تایید شده</Badge>
+      ) : (
+        <Badge variant="destructive">تایید نشده</Badge>
       );
     },
   },
@@ -59,19 +83,18 @@ export const columns: ColumnDef<IExpertList>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
-            <DropdownMenuLabel>اقدامات</DropdownMenuLabel>
-            <DropdownMenuSeparator />
+            {/* <DropdownMenuLabel>اقدامات</DropdownMenuLabel> */}
             <DropdownMenuItem
               dir="rtl"
-              onClick={() => navigator.clipboard.writeText(expert.firstName)}
+              onClick={() => console.log(`expertId => ${expert.expertId}`)}
             >
-              کپی اسم کوچک
+              نمایش جزئیات بیشتر
             </DropdownMenuItem>
-            <DropdownMenuItem dir="rtl">نمایش جزئیات متخصص</DropdownMenuItem>
             <DropdownMenuItem dir="rtl">ویرایش اطلاعات</DropdownMenuItem>
+            <DropdownMenuItem dir="rtl">تایید حساب</DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem dir="rtl" className="text-red-600">
-              حذف
+              حذف متخصص
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

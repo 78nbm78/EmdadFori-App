@@ -79,10 +79,12 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (error: unknown) {
+    console.log(error instanceof Error && error.message);
+
     return NextResponse.json(
       {
         status: "ERROR",
-        message: error instanceof Error ? error.message : "An error occurred",
+        message: "خطایی رخ داد!",
       },
       { status: 400 },
     );

@@ -37,9 +37,10 @@ export async function GET(request: NextRequest) {
         id: true,
         firstName: true,
         lastName: true,
-        natianalCode: true,
+        nationalCode: true,
         createdAt: true,
         updatedAt: true,
+        isActive: true,
         users: {
           select: {
             id: true,
@@ -64,12 +65,13 @@ export async function GET(request: NextRequest) {
       expertId: expert.id,
       firstName: expert.firstName,
       lastName: expert.lastName,
-      natianalCode: expert.natianalCode,
+      nationalCode: expert.nationalCode,
       createdAt: expert.createdAt,
       updatedAt: expert.updatedAt,
       email: expert.users?.email || "ثبت نشده",
       mobile: expert.users?.mobile || "ثبت نشده",
       role: expert.users?.role || "ثبت نشده",
+      isActive: expert.isActive,
       financialReportsCount: expert._count.financialReports,
       jobsCount: expert._count.jobs,
     }));
@@ -85,10 +87,12 @@ export async function GET(request: NextRequest) {
       { status: 200 },
     );
   } catch (error: unknown) {
+    console.log(error instanceof Error && error.message);
+
     return NextResponse.json(
       {
         status: "ERROR",
-        message: error instanceof Error ? error.message : "An error occurred",
+        message: "خطایی رخ داد!",
       },
       { status: 400 },
     );

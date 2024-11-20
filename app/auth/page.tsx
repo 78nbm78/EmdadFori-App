@@ -7,7 +7,7 @@ import MainLayout from "@/layouts/MainLayout";
 const AuthPage = () => {
   return (
     <MainLayout>
-      <div className="bg-[#ece0db] min-h-[calc(100svh-72px)] pt-16 pb-10 px-4 flex flex-col items-center justify-center">
+      <div className="wrapper bg-[#ece0db] px-4 flex flex-col items-center justify-center">
         <Tabs dir="rtl" defaultValue="applicant" className="max-w-96">
           <TabsList className="grid w-full grid-cols-2 h-auto">
             <TabsTrigger

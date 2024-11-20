@@ -1,4 +1,4 @@
-import DateToJalally from "@/utils/DateToJalally";
+import { DateToJalali } from "@/utils/DateToJalali";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +28,7 @@ const BlogCard = ({ title, slug, thumbnail, updatedAt }: IBlog) => {
           {title}
         </h3>
         <p className="text-primary text-sm font-thin">
-          <DateToJalally date={updatedAt} />
+          <DateToJalali date={updatedAt} />
         </p>
       </div>
     </Link>

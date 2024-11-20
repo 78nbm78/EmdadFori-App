@@ -3,13 +3,14 @@ export interface IExpertList {
   expertId: number;
   firstName: string;
   lastName: string;
-  natianalCode: string;
+  nationalCode: string;
   createdAt: string;
   updatedAt: string;
   email: string;
   mobile: string;
   role: "ADMIN" | "APPLICANT" | "EXPERT";
   financialReportsCount: number;
+  isActive: boolean;
   jobsCount: number;
 }
 

@@ -15,24 +15,15 @@ export type ILoginInputs = {
   password: string;
 };
 
-//   export type ISignupDoctorInputs = {
-//     first_name: string;
-//     last_name: string;
-//     experience: string;
-//     medical_code: string;
-//     email: string;
-//     password: string;
-//     password_repeat?: string;
-//   };
-
-//   export type IPatientSignupInputs = {
-//     first_name: string;
-//     last_name: string;
-//     email: string;
-//     age: number;
-//     password: string;
-//     password_repeat?: string;
-//   };
+export type IExpertSignupInputs = {
+  firstName: string;
+  lastName: string;
+  mobile: string;
+  phoneNumber: string;
+  nationalCode: string;
+  password: string;
+  passwordRepeat?: string;
+};
 
 export type ILoginResponse = {
   status: "SUCCESS" | "ERROR";

@@ -1,42 +1,50 @@
-/*
-  Warnings:
+-- CreateEnum
+CREATE TYPE "RoleEnums" AS ENUM ('ADMIN', 'EXPERT', 'APPLICANT');
 
-  - A unique constraint covering the columns `[phoneNumer]` on the table `Experts` will be added. If there are existing duplicate values, this will fail.
-  - A unique constraint covering the columns `[mobile]` on the table `Experts` will be added. If there are existing duplicate values, this will fail.
-  - A unique constraint covering the columns `[bankShebaNumber]` on the table `Experts` will be added. If there are existing duplicate values, this will fail.
-  - A unique constraint covering the columns `[bankCardNumber]` on the table `Experts` will be added. If there are existing duplicate values, this will fail.
-  - Added the required column `firstName` to the `Experts` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `lastName` to the `Experts` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `mobile` to the `Experts` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `natianalCode` to the `Experts` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `phoneNumer` to the `Experts` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `subscriptionId` to the `Experts` table without a default value. This is not possible if the table is not empty.
+-- CreateTable
+CREATE TABLE "Users" (
+    "id" SERIAL NOT NULL,
+    "password" TEXT NOT NULL,
+    "email" TEXT,
+    "mobile" TEXT NOT NULL,
+    "role" "RoleEnums" NOT NULL DEFAULT 'APPLICANT',
+    "expertId" INTEGER,
+    "applicantId" INTEGER,
+    "isAdmin" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
-*/
--- DropIndex
-DROP INDEX "Users_expertId_applicantId_email_idx";
+    CONSTRAINT "Users_pkey" PRIMARY KEY ("id")
+);
 
--- AlterTable
-ALTER TABLE "Experts" ADD COLUMN     "bankCardNumber" INTEGER,
-ADD COLUMN     "bankShebaNumber" TEXT,
-ADD COLUMN     "carGreenCardImage" TEXT,
-ADD COLUMN     "carImage" TEXT,
-ADD COLUMN     "carPersonalAndCarImage" TEXT,
-ADD COLUMN     "email" TEXT,
-ADD COLUMN     "firstName" TEXT NOT NULL,
-ADD COLUMN     "homeAddress" TEXT,
-ADD COLUMN     "lastName" TEXT NOT NULL,
-ADD COLUMN     "mobile" INTEGER NOT NULL,
-ADD COLUMN     "natianalCode" TEXT NOT NULL,
-ADD COLUMN     "nationalCardImage" TEXT,
-ADD COLUMN     "phoneNumer" INTEGER NOT NULL,
-ADD COLUMN     "postalCode" TEXT,
-ADD COLUMN     "subscriptionId" INTEGER NOT NULL;
+-- CreateTable
+CREATE TABLE "Experts" (
+    "id" SERIAL NOT NULL,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
+    "nationalCode" TEXT NOT NULL,
+    "nationalCardImage" TEXT,
+    "phoneNumber" INTEGER NOT NULL,
+    "homeAddress" TEXT,
+    "postalCode" TEXT,
+    "bankShebaNumber" TEXT,
+    "bankCardNumber" INTEGER,
+    "carImage" TEXT,
+    "carGreenCardImage" TEXT,
+    "carPersonalAndCarImage" TEXT,
+    "subscriptionId" INTEGER,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Experts_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Jobs" (
     "id" SERIAL NOT NULL,
     "expertId" INTEGER,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Jobs_pkey" PRIMARY KEY ("id")
 );
@@ -45,6 +53,8 @@ CREATE TABLE "Jobs" (
 CREATE TABLE "FinancialReports" (
     "id" SERIAL NOT NULL,
     "expertId" INTEGER,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "FinancialReports_pkey" PRIMARY KEY ("id")
 );
@@ -52,8 +62,19 @@ CREATE TABLE "FinancialReports" (
 -- CreateTable
 CREATE TABLE "Subscriptions" (
     "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Subscriptions_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Applicants" (
+    "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Applicants_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -120,6 +141,36 @@ CREATE TABLE "Comments" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Users_email_key" ON "Users"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Users_mobile_key" ON "Users"("mobile");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Users_expertId_key" ON "Users"("expertId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Users_applicantId_key" ON "Users"("applicantId");
+
+-- CreateIndex
+CREATE INDEX "Users_expertId_applicantId_mobile_email_idx" ON "Users"("expertId", "applicantId", "mobile", "email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Experts_nationalCode_key" ON "Experts"("nationalCode");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Experts_phoneNumber_key" ON "Experts"("phoneNumber");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Experts_bankShebaNumber_key" ON "Experts"("bankShebaNumber");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Experts_bankCardNumber_key" ON "Experts"("bankCardNumber");
+
+-- CreateIndex
+CREATE INDEX "Experts_id_subscriptionId_idx" ON "Experts"("id", "subscriptionId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Services_title_key" ON "Services"("title");
 
 -- CreateIndex
@@ -149,23 +200,14 @@ CREATE INDEX "Blogs_slug_id_idx" ON "Blogs"("slug", "id");
 -- CreateIndex
 CREATE INDEX "Comments_blogId_brandId_serviceId_idx" ON "Comments"("blogId", "brandId", "serviceId");
 
--- CreateIndex
-CREATE UNIQUE INDEX "Experts_phoneNumer_key" ON "Experts"("phoneNumer");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Experts_mobile_key" ON "Experts"("mobile");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Experts_bankShebaNumber_key" ON "Experts"("bankShebaNumber");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Experts_bankCardNumber_key" ON "Experts"("bankCardNumber");
-
--- CreateIndex
-CREATE INDEX "Users_expertId_applicantId_mobile_email_idx" ON "Users"("expertId", "applicantId", "mobile", "email");
+-- AddForeignKey
+ALTER TABLE "Users" ADD CONSTRAINT "Users_expertId_fkey" FOREIGN KEY ("expertId") REFERENCES "Experts"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Experts" ADD CONSTRAINT "Experts_subscriptionId_fkey" FOREIGN KEY ("subscriptionId") REFERENCES "Subscriptions"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Users" ADD CONSTRAINT "Users_applicantId_fkey" FOREIGN KEY ("applicantId") REFERENCES "Applicants"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Experts" ADD CONSTRAINT "Experts_subscriptionId_fkey" FOREIGN KEY ("subscriptionId") REFERENCES "Subscriptions"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Jobs" ADD CONSTRAINT "Jobs_expertId_fkey" FOREIGN KEY ("expertId") REFERENCES "Experts"("id") ON DELETE SET NULL ON UPDATE CASCADE;

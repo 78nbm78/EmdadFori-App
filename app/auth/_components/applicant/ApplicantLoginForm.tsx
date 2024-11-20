@@ -81,7 +81,7 @@ const ApplicantLoginForm = () => {
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <CardContent className="space-y-3">
+        <CardContent className="space-y-4">
           <div className="space-y-1">
             <Label htmlFor="mobile">شماره موبایل</Label>
 
