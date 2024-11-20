@@ -1,6 +1,5 @@
 import * as jose from "jose";
 import { jwtDecode } from "jwt-decode";
-import { getCookieByKey } from "./cookie";
 
 interface IProps {
   isAdmin: boolean;

@@ -9,8 +9,8 @@ datasource db {
 
 model Users {
     id          Int         @id @default(autoincrement())
-    email       String      @unique
     password    String
+    email       String      @unique
     mobile      String      @unique
     role        RoleEnums   @default(APPLICANT)
     expertId    Int?        @unique
@@ -31,13 +31,58 @@ enum RoleEnums {
 }
 
 model Experts {
-    id    Int    @id @default(autoincrement())
-    users Users?
+    id                     Int                @id @default(autoincrement())
+    firstName              String
+    lastName               String
+    natianalCode           String             @unique
+    nationalCardImage      String?
+    phoneNumer             Int                @unique
+    homeAddress            String?
+    postalCode             String?
+    bankShebaNumber        String?            @unique
+    bankCardNumber         Int?               @unique
+    carImage               String?
+    carGreenCardImage      String?
+    carPersonalAndCarImage String?
+    jobs                   Jobs[]
+    financialReports       FinancialReports[]
+    users                  Users?
+    subscription           Subscriptions?     @relation(fields: [subscriptionId], references: [id])
+    subscriptionId         Int?
+    createdAt              DateTime           @default(now())
+    updatedAt              DateTime           @updatedAt
+}
+
+model Jobs {
+    id Int @id @default(autoincrement())
+
+    expert    Experts? @relation(fields: [expertId], references: [id])
+    expertId  Int?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model FinancialReports {
+    id Int @id @default(autoincrement())
+
+    expert    Experts? @relation(fields: [expertId], references: [id])
+    expertId  Int?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Subscriptions {
+    id        Int       @id @default(autoincrement())
+    experts   Experts[]
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
 }
 
 model Applicants {
-    id    Int    @id @default(autoincrement())
-    users Users?
+    id        Int      @id @default(autoincrement())
+    users     Users?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Services {

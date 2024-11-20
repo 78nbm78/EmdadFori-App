@@ -1,8 +1,14 @@
 import AdminLayout from "@/layouts/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import AdminPageTitle from "../_components/AdminPageTitle";
+import ShowExpertsList from "./_components/ShowExpertsList";
+import { getAllExperts } from "./_core/requests";
+import { getCookieByKey } from "@/actions/cookie";
 
-const AdminExpertsPage = () => {
+const AdminExpertsPage = async () => {
+  const token = await getCookieByKey("token");
+  const experts = await getAllExperts({ accessToken: token || "" });
+
   return (
     <AdminLayout>
       <AdminPageTitle
@@ -13,7 +19,7 @@ const AdminExpertsPage = () => {
       <section>
         <Card>
           <CardContent className="pt-6">
-            این یک کامپوننت تست می‌باشد.
+            <ShowExpertsList experts={experts?.data || []} />
           </CardContent>
         </Card>
       </section>

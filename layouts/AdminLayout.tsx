@@ -24,7 +24,7 @@ const AdminLayout: React.FC<IProps> = async ({ children }) => {
           <div className="flex justify-end">
             <Link
               href="/admin/comments"
-              className="inline-flex items-center gap-2 text-white"
+              className="inline-flex items-center gap-2 text-white transition hover:text-primary"
             >
               <MessageSquareMore />
               نظرات کاربران

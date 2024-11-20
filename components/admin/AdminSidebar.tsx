@@ -40,10 +40,10 @@ const AdminSidebar = () => {
           <p className="font-medium text-sm">ادمین</p>
         </div>
 
-        <ul className="space-y-2">
+        <ul>
           <li>
             <Link
-              className={`${pathname === "/admin" ? "text-primary bg-primary/15" : "text-slate-800"} block transition hover:bg-primary/15 hover:text-primary py-2 px-4`}
+              className={`${pathname === "/admin" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin"
             >
               داشبورد
@@ -51,7 +51,15 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/experts" ? "text-primary bg-primary/15" : "text-slate-800"} block transition hover:bg-primary/15 hover:text-primary py-2 px-4`}
+              className={`${pathname === "/admin/premium-card" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              href="/admin/premium-card"
+            >
+              درخواست‌های کارت طلایی
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={`${pathname === "/admin/experts" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/experts"
             >
               لیست متخصصین
@@ -59,7 +67,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/applicants" ? "text-primary bg-primary/15" : "text-slate-800"} block transition hover:bg-primary/15 hover:text-primary py-2 px-4`}
+              className={`${pathname === "/admin/applicants" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/applicants"
             >
               لیست کاربران
@@ -67,7 +75,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/blog" ? "text-primary bg-primary/15" : "text-slate-800"} block transition hover:bg-primary/15 hover:text-primary py-2 px-4`}
+              className={`${pathname === "/admin/blog" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/blog"
             >
               مدیریت بلاگ
@@ -75,7 +83,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/services" ? "text-primary bg-primary/15" : "text-slate-800"} block transition hover:bg-primary/15 hover:text-primary py-2 px-4`}
+              className={`${pathname === "/admin/services" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/services"
             >
               مدیریت خدمات
@@ -83,7 +91,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/brands" ? "text-primary bg-primary/15" : "text-slate-800"} block transition hover:bg-primary/15 hover:text-primary py-2 px-4`}
+              className={`${pathname === "/admin/brands" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/brands"
             >
               مدیریت برندها
