@@ -1,7 +1,10 @@
 import Image from "next/image";
-import BrandsData from "@/mock/BrandsData.json";
+import { GetBrands } from "../brands/_core/requests";
+import Link from "next/link";
 
-const HomeBrands = () => {
+const HomeBrands = async () => {
+  const brands = await GetBrands();
+
   return (
     <section className="wrapper">
       <div className="container">
@@ -12,21 +15,23 @@ const HomeBrands = () => {
           <hr className="custom-hr !mb-0" />
         </div>
         <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
-          {BrandsData.map((brand) => (
-            <div
-              key={brand.id}
-              className="flex flex-col gap-1 justify-center items-center text-center border border-slate-200 px-2 pt-1 pb-2 rounded-lg cursor-pointer transition hover:bg-primary/20 hover:border-primary"
-            >
-              <Image
-                src={brand.icon}
-                width={50}
-                height={50}
-                alt={`امداد ${brand.label}`}
-                title={`امداد ${brand.label}`}
-              />
-              <span className="font-medium text-sm">امداد {brand.label}</span>
-            </div>
-          ))}
+          {brands?.data?.length &&
+            brands.data.map((brand) => (
+              <Link
+                key={brand.id}
+                href={`/brands/${brand.slug}`}
+                className="flex flex-col gap-1 justify-center items-center text-center border border-slate-200 px-2 pt-1 pb-2 rounded-lg cursor-pointer transition hover:bg-primary/20 hover:border-primary"
+              >
+                <Image
+                  src={brand.thumbnail}
+                  width={50}
+                  height={50}
+                  alt={`امداد ${brand.title}`}
+                  title={`امداد ${brand.title}`}
+                />
+                <span className="font-medium text-sm">امداد {brand.title}</span>
+              </Link>
+            ))}
         </div>
       </div>
     </section>

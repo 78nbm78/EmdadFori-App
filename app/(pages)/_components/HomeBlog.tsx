@@ -1,6 +1,9 @@
 import BlogCard from "@/components/cards/BlogCard";
+import { GetFilteredBlogs } from "../blog/_core/requests";
 
-const HomeBlog = () => {
+const HomeBlog = async () => {
+  const blogs = await GetFilteredBlogs({ take: 4 });
+
   return (
     <section className="wrapper bg-[#f5f5f5]">
       <div className="container">
@@ -12,38 +15,18 @@ const HomeBlog = () => {
         </div>
 
         <div className="whitespace-nowrap overflow-auto lg:overflow-visible pb-4 lg:pb-0 lg:grid lg:grid-cols-4 lg:gap-6">
-          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
-            <BlogCard
-              slug="/blog/sth"
-              thumbnail={null}
-              title="Blog 1"
-              updatedAt="2024-11-12T13:33:36.195Z"
-            />
-          </div>
-          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
-            <BlogCard
-              slug="/blog/sth"
-              thumbnail={null}
-              title="Blog 2"
-              updatedAt="2024-11-12T13:33:36.195Z"
-            />
-          </div>
-          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
-            <BlogCard
-              slug="/blog/sth"
-              thumbnail={null}
-              title="Blog 3"
-              updatedAt="2024-11-12T13:33:36.195Z"
-            />
-          </div>
-          <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
-            <BlogCard
-              slug="/blog/sth"
-              thumbnail={null}
-              title="Blog 4"
-              updatedAt="2024-11-12T13:33:36.195Z"
-            />
-          </div>
+          {blogs?.data?.length && (
+            blogs.data.map(blog => (
+              <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
+                <BlogCard
+                  slug={`/blog/${blog.slug}`}
+                  thumbnail={blog.thumbnail}
+                  title={blog.title}
+                  updatedAt={blog.updatedAt || ""}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </section>

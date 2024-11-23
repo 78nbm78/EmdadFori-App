@@ -9,8 +9,9 @@ import HeaderLogin from "./HeaderLogin";
 import MenuItems from "./MenuItems";
 import MobileMenu from "./MobileMenu";
 import { Button } from "@/components/ui/button";
+import type { IService } from "@/app/(pages)/services/_core/interfaces";
 
-const MainHeader = () => {
+const MainHeader = ({ services }: { services: IService[] }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   return (
@@ -46,7 +47,7 @@ const MainHeader = () => {
             </Link>
 
             <nav className="hidden lg:grow lg:flex lg:justify-center">
-              <MenuItems />
+              <MenuItems services={services} />
             </nav>
 
             <div className="flex items-center gap-4">

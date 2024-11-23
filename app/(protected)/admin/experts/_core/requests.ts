@@ -19,6 +19,11 @@ export const getAllExperts = async ({
       },
     );
 
+    if (!response.ok) {
+      console.log("Faild to get experts data!");
+      return;
+    }
+
     return await response.json();
   } catch (error: unknown) {
     console.log(error);

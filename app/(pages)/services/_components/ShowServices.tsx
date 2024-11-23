@@ -1,26 +1,26 @@
-import ServicesData from "@/mock/ServicesData.json";
 import Image from "next/image";
 import Link from "next/link";
+import { IService } from "../_core/interfaces";
 
-const ShowServices = () => {
+const ShowServices = ({ services }: { services: IService[] }) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-      {ServicesData.map((service) => (
+      {services?.map((service) => (
         <Link
           key={service.id}
           className="flex flex-col bg-slate-800 justify-center items-center text-center p-4 pb-5 rounded-xl gap-4 transition hover:bg-slate-950"
-          href={service.url}
+          href={`/services/${service.slug || ""}`}
         >
           <Image
-            src={service.greenIcon}
-            alt={service.label}
-            title={service.label}
+            src={service.greenIcon || ""}
+            alt={service.title || ""}
+            title={service.title || ""}
             width={44}
             height={44}
             className="inline-block"
           />
           <h3 className="text-sm sm:text-base text-white font-medium">
-            {service.label}
+            {service.title || ""}
           </h3>
         </Link>
       ))}

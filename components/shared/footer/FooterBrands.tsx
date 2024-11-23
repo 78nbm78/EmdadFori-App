@@ -1,10 +1,10 @@
 "use client";
 
-import BrandsData from "@/mock/BrandsData.json";
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
+import type { IBrand } from "@/app/(pages)/brands/_core/interfaces";
 
-const FooterBrands = () => {
+const FooterBrands = ({ brands }: { brands: IBrand[] }) => {
   const [show, setShow] = useState<boolean>(false);
 
   return (
@@ -21,13 +21,13 @@ const FooterBrands = () => {
         (نمایش همه)
       </button>
       <ul className="mt-4 -mx-4">
-        {BrandsData.map((brand) => (
+        {brands.map((brand) => (
           <li className="inline-block px-4 mb-4 text-white/80" key={brand.id}>
             <Link
-              href={brand.url}
+              href={`/brands/${brand.slug}`}
               className="font-light text-white/80 transition hover:text-primary"
             >
-              امداد {brand.label}
+              امداد {brand.title}
             </Link>
           </li>
         ))}

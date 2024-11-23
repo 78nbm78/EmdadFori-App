@@ -17,7 +17,7 @@ interface IProps {
 //       title: blog?.data?.googleTitle || blog?.data?.title,
 //       description: blog?.data?.description,
 //       url: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
-//       images: [blog?.data?.thumbnail || "/images/thumbnail.jpg"],
+//       images: [blog?.data?.thumbnail || "/images/default-cover.jpg"],
 //     },
 //     alternates: {
 //       canonical: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
@@ -32,7 +32,7 @@ const SingleBlogPage: React.FC<IProps> = async ({ params }) => {
   const list = [
     { id: 1, title: "امداد فوری", slug: "/" },
     { id: 2, title: "اخبار و مقالات", slug: "/blog" },
-    { id: 3, title: slug, slug: `/blog/${slug}` },
+    { id: 3, title: decodeURI(slug), slug: `/blog/${decodeURI(slug)}` },
   ];
 
   // Blog Schema
@@ -65,13 +65,13 @@ const SingleBlogPage: React.FC<IProps> = async ({ params }) => {
 
   return (
     <MainLayout>
-      <PageTitle title={slug} list={list} />
+      <PageTitle title={decodeURI(slug)} list={list} />
 
       <section className="wrapper">
         <div className="container">
           SingleBlogPage
           <br />
-          slug = {slug}
+          slug = {decodeURI(slug)}
         </div>
       </section>
 

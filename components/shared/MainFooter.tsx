@@ -2,12 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import LogoBlack from "@/public/images/logo.png";
 import NeedBtn from "./footer/NeedBtn";
-import { Mail, MapPin, PhoneCall, TabletSmartphone } from "lucide-react";
-import { Button } from "../ui/button";
-import ServicesData from "@/mock/ServicesData.json";
 import FooterBrands from "./footer/FooterBrands";
+import FooterGoldCard from "./footer/FooterGoldCard";
+import FooterContact from "./footer/FooterContact";
+import { GetBrands } from "@/app/(pages)/brands/_core/requests";
+import { GetServices } from "@/app/(pages)/services/_core/requests";
 
-const MainFooter = () => {
+const MainFooter = async () => {
+  const services = await GetServices();
+  const brands = await GetBrands();
+  // const blogs = await GetBlogs();
+
   return (
     <>
       <section className="wrapper pb-44 sm:pb-64 bg-stone-200 dark:bg-stone-800">
@@ -42,38 +47,7 @@ const MainFooter = () => {
             </Link>
           </div>
 
-          <div className="pt-16 sm:pt-10 lg:pt-8 sm:flex sm:items-center sm:justify-between">
-            <div className="mb-6 sm:mb-0 space-y-8">
-              <p className="text-white text-3xl md:text-4xl text-center sm:text-start font-bold">
-                <span className="text-amber-500">کارت طلایی</span> امداد خودرو
-                دارید؟
-              </p>
-              <p className="text-white/70 text-xl md:text-2xl max-w-[550px] !leading-8">
-                بمدت یک‌سال هر جا توی جاده گیر کردی و یا به خدمات امداد خودرویی
-                نیاز داشتی، ما{" "}
-                <span className="text-green-500 font-medium">رایگان</span> در
-                کنارتیم!
-              </p>
-            </div>
-            <div className="flex sm:flex-col gap-4">
-              <Button variant="primary" asChild>
-                <Link
-                  href="/premium-card"
-                  className="btn btn-dark w-1/2 text-center sm:min-w-40"
-                >
-                  دریافت کارت طلایی
-                </Link>
-              </Button>
-              <Button variant="destructive" asChild>
-                <Link
-                  href="/services"
-                  className="btn btn-white w-1/2 text-center sm:min-w-40"
-                >
-                  خدمات امداد فوری
-                </Link>
-              </Button>
-            </div>
-          </div>
+          <FooterGoldCard />
 
           <hr className="my-8 md:my-12 h-1 w-full bg-white/20 rounded-lg border-0" />
 
@@ -81,13 +55,13 @@ const MainFooter = () => {
             <div className="w-full lg:w-1/2 xl:w-1/3 sm:px-3">
               <p className="font-bold text-white mb-4">خدمات امداد فوری</p>
               <ul className="grid grid-cols-2 gap-4">
-                {ServicesData.map((service) => (
+                {services?.data?.map((service) => (
                   <li key={service.id}>
                     <Link
-                      href={service.url}
+                      href={`/services/${service.slug}`}
                       className="font-light text-white/80 transition hover:text-primary"
                     >
-                      {service.label}
+                      {service.title}
                     </Link>
                   </li>
                 ))}
@@ -181,98 +155,11 @@ const MainFooter = () => {
             </div>
 
             <div className="w-full xl:w-1/4 sm:px-3">
-              <ul className="space-y-4 mb-6">
-                <li>
-                  <a
-                    href="tel:+98"
-                    rel="noopener noreferrer nofollow"
-                    className="flex items-center text-white"
-                  >
-                    <PhoneCall className="min-w-6 text-center me-2 sm:me-3" />
-                    <span className="[direction:ltr] track_calls">
-                      ۰۲۱ ۱۲۳ ۴۵ ۶۷
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="tel:+98"
-                    rel="noopener noreferrer nofollow"
-                    className="flex items-center text-white"
-                  >
-                    <TabletSmartphone className="min-w-6 text-center me-2 sm:me-3" />
-                    <span className="[direction:ltr] track_calls">
-                      ۰۹۱۲ ۱۲۳ ۴۵ ۶۷
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:info@emdadfori.com"
-                    rel="noopener noreferrer nofollow"
-                    className="flex items-center text-white"
-                  >
-                    <Mail className="min-w-6 text-center me-2 sm:me-3" />
-                    <span className="[direction:ltr]">info@emdadfori.com</span>
-                  </a>
-                </li>
-                <li>
-                  <p className="flex text-white">
-                    <MapPin className="min-w-6 text-center me-2 sm:me-3" />
-                    <span>
-                      تهران - منیریه - ادامه‌ی آدرس شما - در این قسمت - قرار
-                      خواهد گرفت
-                    </span>
-                  </p>
-                </li>
-              </ul>
-
-              <ul className="flex justify-center gap-4">
-                <li>
-                  <a
-                    href="https://web.whatsapp.com/send?phone=+989015854850"
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="rounded-full w-10 h-10 bg-white/30 flex items-center justify-center text-white text-lg transition hover:bg-black"
-                  >
-                    {/* <FaWhatsapp /> */}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.instagram.com/arman_novin_plastic/"
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="rounded-full w-10 h-10 bg-white/30 flex items-center justify-center text-white text-lg transition hover:bg-black"
-                  >
-                    {/* <FaInstagram /> */}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.facebook.com/armannovinplasticpart"
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="rounded-full w-10 h-10 bg-white/30 flex items-center justify-center text-white text-lg transition hover:bg-black"
-                  >
-                    {/* <FaFacebook /> */}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/company/armannovinplasticpart"
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="rounded-full w-10 h-10 bg-white/30 flex items-center justify-center text-white text-lg transition hover:bg-black"
-                  >
-                    {/* <FaLinkedin /> */}
-                  </a>
-                </li>
-              </ul>
+              <FooterContact />
             </div>
           </div>
 
-          <FooterBrands />
+          <FooterBrands brands={brands?.data || []} />
 
           <hr className="my-8 md:my-12 h-1 w-full bg-white/20 rounded-lg border-0" />
 

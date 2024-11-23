@@ -94,6 +94,7 @@ model Services {
     description String
     slug        String     @unique
     thumbnail   String?
+    greenIcon   String?
     googleTitle String?
     createdAt   DateTime   @default(now())
     updatedAt   DateTime   @updatedAt

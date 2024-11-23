@@ -60,6 +60,12 @@ export async function GET(request: NextRequest) {
       },
     });
 
+    if (!experts)
+      return NextResponse.json(
+        { status: "ERROR", message: "متخصصی یافت نشد!" },
+        { status: 404 },
+      );
+
     const formattedExperts = experts.map((expert) => ({
       userId: expert.users?.id || 0,
       expertId: expert.id,
@@ -75,12 +81,6 @@ export async function GET(request: NextRequest) {
       financialReportsCount: expert._count.financialReports,
       jobsCount: expert._count.jobs,
     }));
-
-    if (!experts)
-      return NextResponse.json(
-        { status: "ERROR", message: "متخصصی یافت نشد!" },
-        { status: 404 },
-      );
 
     return NextResponse.json(
       { status: "SUCCESS", data: formattedExperts },

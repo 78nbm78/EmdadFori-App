@@ -1,8 +1,10 @@
-import ServicesData from "@/mock/ServicesData.json";
 import Image from "next/image";
 import Link from "next/link";
+import { GetServices } from "../services/_core/requests";
 
-const HomeServices = () => {
+const HomeServices = async () => {
+  const services = await GetServices();
+
   return (
     <section className="wrapper bg-[#f5f5f5]">
       <div className="container">
@@ -13,22 +15,22 @@ const HomeServices = () => {
           <hr className="custom-hr" />
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {ServicesData.map((service) => (
+          {services?.data?.map((service) => (
             <Link
               key={service.id}
               className="flex flex-col bg-slate-800 justify-center items-center text-center p-4 pb-5 rounded-xl gap-4 transition hover:bg-slate-950"
-              href={service.url}
+              href={`/services/${service.slug || ""}`}
             >
               <Image
-                src={service.greenIcon}
-                alt={service.label}
-                title={service.label}
+                src={service.greenIcon || ""}
+                alt={service.title || ""}
+                title={service.title || ""}
                 width={44}
                 height={44}
                 className="inline-block"
               />
               <h3 className="text-sm sm:text-base text-white font-medium">
-                {service.label}
+                {service.title || ""}
               </h3>
             </Link>
           ))}

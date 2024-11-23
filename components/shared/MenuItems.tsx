@@ -3,11 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ServicesData from "@/mock/ServicesData.json";
 import { ChevronDown } from "lucide-react";
-// import BrandsData from "@/mock/BrandsData.json";
+import type { IService } from "@/app/(pages)/services/_core/interfaces";
 
-const MenuItems = () => {
+const MenuItems = ({ services }: { services: IService[] }) => {
   const pathname = usePathname();
 
   return (
@@ -30,21 +29,21 @@ const MenuItems = () => {
         </Link>
 
         <ul className="transition invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute top-full start-0 w-full bg-white rounded-b-xl grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 shadow-md p-4 md:p-6 border-t border-t-slate-200 gap-6 max-h-[calc(100svh-100px)] overflow-auto">
-          {ServicesData.map((service) => (
+          {services?.map((service) => (
             <li className="text-center" key={service.id}>
               <Link
-                href={service.url}
+                href={`/services/${service.slug}`}
                 className="inline-flex flex-col items-center justify-center transition hover:text-green-500 text-sm gap-2"
               >
                 <Image
-                  src={service.greenIcon}
-                  alt={service.label}
-                  title={service.label}
+                  src={service.greenIcon || ""}
+                  alt={service.title}
+                  title={service.title}
                   width={36}
                   height={36}
                   className="inline-block"
                 />
-                {service.label}
+                {service.title}
               </Link>
             </li>
           ))}
@@ -60,7 +59,7 @@ const MenuItems = () => {
         </Link>
 
         {/* <ul className="transition invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute top-full start-0 w-full bg-white rounded-b-xl grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 shadow-md p-4 md:p-6 border-t border-t-slate-200 gap-6 max-h-[calc(100svh-100px)] overflow-auto">
-          {BrandsData.map((brand) => (
+          {brandsData.map((brand) => (
             <li className="text-center" key={brand.id}>
               <Link
                 href={brand.url}
@@ -68,13 +67,13 @@ const MenuItems = () => {
               >
                 <Image
                   src={brand.icon}
-                  alt={brand.label}
-                  title={brand.label}
+                  alt={brand.title}
+                  title={brand.title}
                   width={36}
                   height={36}
                   className="inline-block"
                 />
-                {brand.label}
+                {brand.title}
               </Link>
             </li>
           ))}
