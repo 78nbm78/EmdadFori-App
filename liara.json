@@ -1,0 +1,10 @@
+{
+    "app": "emdadfori",
+    "port": 3000,
+    "next": {
+        "modifyConfig": false
+    },
+    "node": {
+        "mirror": false
+    }
+}
