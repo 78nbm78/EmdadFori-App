@@ -4,8 +4,12 @@ import ShowBrands from "./_components/ShowBrands";
 import { GetBrands } from "./_core/requests";
 
 const list = [
-  { id: 1, title: "امداد فوری", slug: "/" },
-  { id: 2, title: "برندهای خودرو", slug: "/brands" },
+  { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },
+  {
+    id: 2,
+    title: "برندهای خودرو",
+    slug: `${process.env.NEXT_PUBLIC_URL}/brands`,
+  },
 ];
 
 const BrandsPage = async () => {

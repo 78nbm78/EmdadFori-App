@@ -2,8 +2,12 @@ import PageTitle from "@/components/shared/PageTitle";
 import MainLayout from "@/layouts/MainLayout";
 
 const list = [
-  { id: 1, title: "امداد فوری", slug: "/" },
-  { id: 2, title: "کارت طلایی امداد فوری", slug: "/premium-card" },
+  { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },
+  {
+    id: 2,
+    title: "کارت طلایی امداد فوری",
+    slug: `${process.env.NEXT_PUBLIC_URL}/premium-card`,
+  },
 ];
 
 const PremiumCartPage = () => {

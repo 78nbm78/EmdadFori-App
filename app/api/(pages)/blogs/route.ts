@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextResponse, type NextRequest } from "next/server";
 import db from "@/lib/db";
 
@@ -6,16 +8,15 @@ export async function GET(request: NextRequest) {
     const takeParam = request.nextUrl.searchParams.get("take");
     const take = takeParam ? Number(takeParam) : undefined;
 
-    // Check if the limit is a valid number
-    if (takeParam && (take === undefined || isNaN(take))) {
-      return NextResponse.json(
-        { status: "ERROR", message: "Invalid take parameter" },
-        { status: 400 },
-      );
-    }
+    // if (takeParam && (take === undefined || isNaN(take))) {
+    //   return NextResponse.json(
+    //     { status: "ERROR", message: "Invalid take parameter" },
+    //     { status: 400 },
+    //   );
+    // }
 
     const blogs = await db.blogs.findMany({
-      take: take,
+      take: take || 10,
       select: {
         id: true,
         title: true,

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextResponse, type NextRequest } from "next/server";
 import * as jose from "jose";
 import db from "@/lib/db";
@@ -13,7 +15,7 @@ export async function GET(request: NextRequest) {
       );
 
     // Verify JWT token
-    const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
     try {
       await jose.jwtVerify(jwt, secret);
     } catch (error: unknown) {

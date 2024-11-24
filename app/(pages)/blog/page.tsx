@@ -4,8 +4,12 @@ import MainLayout from "@/layouts/MainLayout";
 import { GetBlogs } from "./_core/requests";
 
 const list = [
-  { id: 1, title: "امداد فوری", slug: "/" },
-  { id: 2, title: "اخبار و مقالات", slug: "/blog" },
+  { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },
+  {
+    id: 2,
+    title: "اخبار و مقالات",
+    slug: `${process.env.NEXT_PUBLIC_URL}/blog`,
+  },
 ];
 
 const BlogPage = async () => {

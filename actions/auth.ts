@@ -9,7 +9,7 @@ interface IProps {
 
 export const onCreateJWT = async ({ isAdmin, userId, role }: IProps) => {
   // Create JWT Token
-  const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET);
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
   const alg = "HS256";
 
   // Include additional information in the payload

@@ -19,7 +19,7 @@ export default async function middleware(request: NextRequest) {
   // Verify JWT if token is present
   if (tokenCookie) {
     try {
-      const secret = process.env.NEXT_PUBLIC_JWT_SECRET;
+      const secret = process.env.JWT_SECRET;
 
       if (!secret) {
         throw new Error("JWT_SECRET is not defined");

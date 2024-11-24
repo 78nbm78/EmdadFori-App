@@ -31,12 +31,16 @@ const SingleServicePage: React.FC<IProps> = async ({ params }) => {
   const service = await GetServiceBySlug({ slug });
 
   const list = [
-    { id: 1, title: "امداد فوری", slug: "/" },
-    { id: 2, title: "خدمات امداد فوری", slug: "/services" },
+    { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },
+    {
+      id: 2,
+      title: "خدمات امداد فوری",
+      slug: `${process.env.NEXT_PUBLIC_URL}/services`,
+    },
     {
       id: 3,
       title: service?.data?.title || "",
-      slug: `/services/${decodeURI(service?.data?.slug || "")}`,
+      slug: `${process.env.NEXT_PUBLIC_URL}/services/${decodeURI(service?.data?.slug || "")}`,
     },
   ];
 

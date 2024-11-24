@@ -11,8 +11,12 @@ export const metadata = {
 };
 
 const list = [
-  { id: 1, title: "امداد فوری", slug: "/" },
-  { id: 2, title: "تماس با ما", slug: "/contact" },
+  { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },
+  {
+    id: 2,
+    title: "تماس با ما",
+    slug: `${process.env.NEXT_PUBLIC_URL}/contact`,
+  },
 ];
 
 const ContactPage = () => {

@@ -30,9 +30,17 @@ const SingleBlogPage: React.FC<IProps> = async ({ params }) => {
   // const blog = await GetBlogBySlug({ slug });
 
   const list = [
-    { id: 1, title: "امداد فوری", slug: "/" },
-    { id: 2, title: "اخبار و مقالات", slug: "/blog" },
-    { id: 3, title: decodeURI(slug), slug: `/blog/${decodeURI(slug)}` },
+    { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },
+    {
+      id: 2,
+      title: "اخبار و مقالات",
+      slug: `${process.env.NEXT_PUBLIC_URL}/blog`,
+    },
+    {
+      id: 3,
+      title: decodeURI(slug),
+      slug: `${process.env.NEXT_PUBLIC_URL}/blog/${decodeURI(slug)}`,
+    },
   ];
 
   // Blog Schema

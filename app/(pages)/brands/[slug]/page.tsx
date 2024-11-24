@@ -31,12 +31,16 @@ const SingleBrandPage: React.FC<IProps> = async ({ params }) => {
   const brand = await GetBrandBySlug({ slug });
 
   const list = [
-    { id: 1, title: "امداد فوری", slug: "/" },
-    { id: 2, title: "برندهای خودرو", slug: "/brands" },
+    { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },
+    {
+      id: 2,
+      title: "برندهای خودرو",
+      slug: `${process.env.NEXT_PUBLIC_URL}/brands`,
+    },
     {
       id: 3,
       title: brand?.data?.title || "",
-      slug: `/brands/${decodeURI(brand?.data?.slug || slug)}`,
+      slug: `${process.env.NEXT_PUBLIC_URL}/brands/${decodeURI(brand?.data?.slug || slug)}`,
     },
   ];
 
