@@ -46,7 +46,10 @@ const SingleServicePage: React.FC<IProps> = async ({ params }) => {
 
   return (
     <MainLayout>
-      <PageTitle title={service?.data?.googleTitle || ""} list={list} />
+      <PageTitle
+        title={service?.data?.googleTitle || service?.data?.title || ""}
+        list={list}
+      />
 
       <section className="wrapper">
         <div className="container">

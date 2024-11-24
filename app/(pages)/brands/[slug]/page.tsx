@@ -46,7 +46,10 @@ const SingleBrandPage: React.FC<IProps> = async ({ params }) => {
 
   return (
     <MainLayout>
-      <PageTitle title={brand?.data?.title || ""} list={list} />
+      <PageTitle
+        title={brand?.data?.googleTitle || brand?.data?.title || ""}
+        list={list}
+      />
 
       <section className="wrapper">
         <div className="container">slug = {decodeURI(slug)}</div>
