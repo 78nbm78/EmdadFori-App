@@ -15,9 +15,12 @@ const HomeBlog = async () => {
         </div>
 
         <div className="whitespace-nowrap overflow-auto lg:overflow-visible pb-4 lg:pb-0 lg:grid lg:grid-cols-4 lg:gap-6">
-          {blogs?.data?.length && (
-            blogs.data.map(blog => (
-              <div className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0">
+          {blogs?.data?.length &&
+            blogs.data.map((blog) => (
+              <div
+                key={blog.id}
+                className="inline-block lg:block w-72 lg:w-auto me-6 lg:me-0 last-of-type:me-0"
+              >
                 <BlogCard
                   slug={`/blog/${blog.slug}`}
                   thumbnail={blog.thumbnail}
@@ -25,8 +28,7 @@ const HomeBlog = async () => {
                   updatedAt={blog.updatedAt || ""}
                 />
               </div>
-            ))
-          )}
+            ))}
         </div>
       </div>
     </section>

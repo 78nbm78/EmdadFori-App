@@ -18,16 +18,16 @@ const BlogPage = async () => {
       <section className="wrapper bg-[#f5f5f5]">
         <div className="container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {blogs?.data?.length && (
-              blogs.data.map(blog => (
+            {blogs?.data?.length &&
+              blogs.data.map((blog) => (
                 <BlogCard
+                  key={blog.id}
                   slug={`/blog/${blog.slug}`}
                   thumbnail={blog.thumbnail}
                   title={blog.title}
                   updatedAt={blog.updatedAt || ""}
                 />
-              ))
-            )}
+              ))}
           </div>
         </div>
       </section>
