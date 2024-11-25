@@ -5,7 +5,7 @@
 //   const d = new Intl.DateTimeFormat("fa-IR").format(myDate);
 //   const finnal = d.toString();
 //   return finnal;
-// };
+// }
 
 import { parseISO, format } from "date-fns-jalali";
 
