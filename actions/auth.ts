@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 interface IProps {
   isAdmin: boolean;
   userId: string;
-  role: "ADMIN" | "EXPERT" | "APPLICANT";
+  role: "ADMIN" | "EXPERT" | "APPLICANT" | "ASSISTANT";
 }
 
 export const onCreateJWT = async ({ isAdmin, userId, role }: IProps) => {

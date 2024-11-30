@@ -8,7 +8,12 @@ import Image from "next/image";
 import AvatarImage from "@/public/images/user-avatar.svg";
 import { toast } from "@/hooks/use-toast";
 
-const AdminSidebar = () => {
+interface IProps {
+  premiumCount?: number | 0;
+  jobsCount?: number | 0;
+}
+
+const AdminSidebar = ({ jobsCount, premiumCount }: IProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -19,7 +24,7 @@ const AdminSidebar = () => {
   };
 
   return (
-    <aside className="flex flex-col">
+    <aside className="flex flex-col h-full">
       <a
         href="/"
         target="_blank"
@@ -51,15 +56,29 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/premium-card" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
-              href="/admin/premium-card"
+              className={`${pathname.includes("/admin/jobs") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              href="/admin/jobs"
             >
-              درخواست‌های کارت طلایی
+              درخواست‌های امداد
+              <span className="rounded-full w-4 h-4 bg-red-500 text-xs align-top ms-2 text-white inline-flex items-center justify-center">
+                {jobsCount || 0}
+              </span>
             </Link>
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/experts" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/premium-card") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              href="/admin/premium-card"
+            >
+              درخواست‌های کارت طلایی
+              <span className="rounded-full w-4 h-4 bg-red-500 text-xs align-top ms-2 text-white inline-flex items-center justify-center">
+                {premiumCount || 0}
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={`${pathname.includes("/admin/experts") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/experts"
             >
               لیست متخصصین
@@ -67,7 +86,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/applicants" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/applicants") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/applicants"
             >
               لیست کاربران
@@ -75,7 +94,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/blog" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/blog") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/blog"
             >
               مدیریت بلاگ
@@ -83,7 +102,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/services" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/services") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/services"
             >
               مدیریت خدمات
@@ -91,7 +110,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <Link
-              className={`${pathname === "/admin/brands" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/brands") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/brands"
             >
               مدیریت برندها

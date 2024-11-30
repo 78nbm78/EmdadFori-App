@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Users {
-    id          Int         @id @default(autoincrement())
+    id          Int         @id() @default(autoincrement())
     password    String
     email       String?     @unique
     mobile      String      @unique
@@ -17,17 +17,20 @@ model Users {
     expert      Experts?    @relation(fields: [expertId], references: [id])
     applicantId Int?        @unique
     applicant   Applicants? @relation(fields: [applicantId], references: [id])
+    assistantId Int?        @unique
+    assistant   Assistants? @relation(fields: [assistantId], references: [id])
     isAdmin     Boolean     @default(false)
     createdAt   DateTime    @default(now())
     updatedAt   DateTime    @updatedAt
 
-    @@index([expertId, applicantId, mobile, email])
+    @@index([expertId, applicantId, assistantId, mobile, email])
 }
 
 enum RoleEnums {
     ADMIN
     EXPERT
     APPLICANT
+    ASSISTANT
 }
 
 model Experts {
@@ -59,10 +62,22 @@ model Experts {
 model Jobs {
     id Int @id @default(autoincrement())
 
-    expert    Experts? @relation(fields: [expertId], references: [id])
-    expertId  Int?
+    jobStatus JobEnums @default(PENDING)
+
+    expert      Experts?    @relation(fields: [expertId], references: [id])
+    expertId    Int?
+    assistant   Assistants? @relation(fields: [assistantId], references: [id])
+    assistantId Int?
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+
+enum JobEnums {
+    DONE
+    DOING
+    PENDING
+    FAILED
 }
 
 model FinancialReports {
@@ -152,4 +167,10 @@ model Comments {
     adminAnswer String?
 
     @@index([blogId, brandId, serviceId])
+}
+
+model Assistants {
+    id    Int    @id @default(autoincrement())
+    users Users?
+    jobs  Jobs[]
 }

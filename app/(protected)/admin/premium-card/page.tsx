@@ -13,7 +13,7 @@ const AdminPremiumCardPage = () => {
       <section>
         <Card>
           <CardContent className="pt-6">
-            این یک کامپوننت تست می‌باشد.
+            موردی برای نمایش وجود ندارد!
           </CardContent>
         </Card>
       </section>

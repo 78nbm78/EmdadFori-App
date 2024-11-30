@@ -35,7 +35,7 @@ const AdminLayout: React.FC<IProps> = async ({ children }) => {
         <main className="grow pt-4">
           <div className="flex flex-wrap -mx-4">
             <div className="w-1/5 px-4">
-              <AdminSidebar />
+              <AdminSidebar jobsCount={0} premiumCount={0} />
             </div>
             <div className="w-4/5 px-4 pt-20">{children}</div>
           </div>

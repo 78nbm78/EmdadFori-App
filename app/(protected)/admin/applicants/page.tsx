@@ -12,9 +12,7 @@ const AdminApplicantsPage = () => {
 
       <section>
         <Card>
-          <CardContent className="pt-6">
-            این یک کامپوننت تست می‌باشد.
-          </CardContent>
+          <CardContent className="pt-6">نمایش لیست کاربران</CardContent>
         </Card>
       </section>
     </AdminLayout>

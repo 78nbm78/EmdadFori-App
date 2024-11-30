@@ -2,7 +2,7 @@ import AdminLayout from "@/layouts/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import AdminPageTitle from "../_components/AdminPageTitle";
 
-const AdminBrandsPage = () => {
+const AdminBrandsPage = async () => {
   return (
     <AdminLayout>
       <AdminPageTitle
@@ -12,9 +12,7 @@ const AdminBrandsPage = () => {
 
       <section>
         <Card>
-          <CardContent className="pt-6">
-            این یک کامپوننت تست می‌باشد.
-          </CardContent>
+          <CardContent className="pt-6">لیست برندها</CardContent>
         </Card>
       </section>
     </AdminLayout>

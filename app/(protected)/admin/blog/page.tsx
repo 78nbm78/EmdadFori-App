@@ -9,9 +9,7 @@ const AdminBlogPage = () => {
 
       <section>
         <Card>
-          <CardContent className="pt-6">
-            این یک کامپوننت تست می‌باشد.
-          </CardContent>
+          <CardContent className="pt-6">لیست مقالات</CardContent>
         </Card>
       </section>
     </AdminLayout>
