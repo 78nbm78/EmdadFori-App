@@ -14,11 +14,11 @@ export interface IService {
 }
 
 export interface IServicesResponse {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   data: IService[];
 }
 
 export interface IServiceResponse {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   data: IService;
 }

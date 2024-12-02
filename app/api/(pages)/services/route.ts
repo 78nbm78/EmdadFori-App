@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import db from "@/lib/db";
+import { AdminAuthChecker } from "@/utils/AdminAuthChecker";
 
 export async function GET() {
   try {
@@ -27,12 +28,12 @@ export async function GET() {
 
     if (!services)
       return NextResponse.json(
-        { status: "ERROR", message: "خدماتی یافت نشد!" },
+        { type: "ERROR", message: "خدماتی یافت نشد!" },
         { status: 404 },
       );
 
     return NextResponse.json(
-      { status: "SUCCESS", data: services },
+      { type: "SUCCESS", data: services },
       {
         // headers: { "Access-Control-Allow-Origin": "*" }, // Allow requests from any origin
         status: 200,
@@ -43,7 +44,46 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        status: "ERROR",
+        type: "ERROR",
+        message: "خطایی رخ داد!",
+      },
+      { status: 400 },
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const checkAuth = await AdminAuthChecker(request);
+    if (!checkAuth)
+      return NextResponse.json(
+        { type: "ERROR", message: "Unauthorized!" },
+        { status: 401 },
+      );
+
+    const { title, description, slug, thumbnail, googleTitle, content } =
+      await request.json();
+
+    const createService = await db.services.create({
+      data: { title, description, slug, thumbnail, googleTitle, content },
+    });
+
+    if (!createService)
+      return NextResponse.json(
+        { type: "ERROR", message: "Failed to create service!" },
+        { status: 400 },
+      );
+
+    return NextResponse.json(
+      { type: "SUCCESS", data: createService },
+      { status: 201 },
+    );
+  } catch (error) {
+    console.log(error instanceof Error && error.message);
+
+    return NextResponse.json(
+      {
+        type: "ERROR",
         message: "خطایی رخ داد!",
       },
       { status: 400 },

@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
 
     if (!mobile || !password) {
       return NextResponse.json(
-        { status: "ERROR", message: "Invalid data!" },
+        { type: "ERROR", message: "Invalid data!" },
         { status: 400 },
       );
     }
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     if (!findUser) {
       return NextResponse.json(
-        { status: "ERROR", message: "شماره موبایل یا کلمه عبور اشتباه است!" },
+        { type: "ERROR", message: "شماره موبایل یا کلمه عبور اشتباه است!" },
         { status: 404 },
       );
     }
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 
     if (!isCorrectPassword) {
       return NextResponse.json(
-        { status: "ERROR", message: "شماره موبایل یا کلمه عبور اشتباه است!" },
+        { type: "ERROR", message: "شماره موبایل یا کلمه عبور اشتباه است!" },
         { status: 400 },
       );
     }
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
     if (!findUser.isAdmin) {
       return NextResponse.json(
         {
-          status: "ERROR",
+          type: "ERROR",
           message: "شماره موبایل یا کلمه عبور اشتباه است!",
         },
         { status: 400 },
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
 
       // Set the JWT in a cookie
       const response = NextResponse.json(
-        { status: "SUCCESS", message: "با موفقیت وارد شدید!" },
+        { type: "SUCCESS", message: "با موفقیت وارد شدید!" },
         { status: 200 },
       );
       response.cookies.set("token", jwt, {
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       {
-        status: "ERROR",
+        type: "ERROR",
         message: "خطایی رخ داد!",
       },
       { status: 400 },

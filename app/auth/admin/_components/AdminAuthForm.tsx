@@ -45,10 +45,10 @@ const AdminAuthForm = () => {
         return;
       }
 
-      if (response?.status === "ERROR") {
+      if (response.type === "ERROR") {
         toast({
           variant: "destructive",
-          title: response?.message,
+          title: response.message,
         });
         return;
       }

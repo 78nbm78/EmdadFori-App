@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> },
 ) {
   try {
-    const slug = (await params).slug; // 'a', 'b', or 'c'
+    const slug = (await params).slug;
 
     const blog = await db.blogs.findUnique({
       where: { slug: decodeURI(slug) },
@@ -18,20 +18,17 @@ export async function GET(
 
     if (!blog)
       return NextResponse.json(
-        { status: "ERROR", message: "موردی یافت نشد!" },
+        { type: "ERROR", message: "موردی یافت نشد!" },
         { status: 404 },
       );
 
-    return NextResponse.json(
-      { status: "SUCCESS", data: blog },
-      { status: 200 },
-    );
+    return NextResponse.json({ type: "SUCCESS", data: blog }, { status: 200 });
   } catch (error: unknown) {
     console.log(error instanceof Error && error.message);
 
     return NextResponse.json(
       {
-        status: "ERROR",
+        type: "ERROR",
         message: "خطایی رخ داد!",
       },
       { status: 400 },

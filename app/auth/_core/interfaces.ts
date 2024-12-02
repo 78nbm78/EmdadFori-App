@@ -26,11 +26,11 @@ export type IExpertSignupInputs = {
 };
 
 export type ILoginResponse = {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   message: string;
 };
 
 export type ISignupResponse = {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   message: string;
 };

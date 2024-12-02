@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import db from "@/lib/db";
+import { AdminAuthChecker } from "@/utils/AdminAuthChecker";
 
 export async function GET() {
   try {
@@ -26,12 +27,12 @@ export async function GET() {
 
     if (!brands)
       return NextResponse.json(
-        { status: "ERROR", message: "برندی یافت نشد!" },
+        { type: "ERROR", message: "برندی یافت نشد!" },
         { status: 404 },
       );
 
     return NextResponse.json(
-      { status: "SUCCESS", data: brands },
+      { type: "SUCCESS", data: brands },
       { status: 200 },
     );
   } catch (error: unknown) {
@@ -39,7 +40,46 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        status: "ERROR",
+        type: "ERROR",
+        message: "خطایی رخ داد!",
+      },
+      { status: 400 },
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const checkAuth = await AdminAuthChecker(request);
+    if (!checkAuth)
+      return NextResponse.json(
+        { type: "ERROR", message: "Unauthorized!" },
+        { status: 401 },
+      );
+
+    const { title, description, slug, thumbnail, googleTitle, content } =
+      await request.json();
+
+    const createBrand = await db.brands.create({
+      data: { title, description, slug, thumbnail, googleTitle, content },
+    });
+
+    if (!createBrand)
+      return NextResponse.json(
+        { type: "ERROR", message: "Failed to create brand!" },
+        { status: 400 },
+      );
+
+    return NextResponse.json(
+      { type: "SUCCESS", data: createBrand },
+      { status: 201 },
+    );
+  } catch (error) {
+    console.log(error instanceof Error && error.message);
+
+    return NextResponse.json(
+      {
+        type: "ERROR",
         message: "خطایی رخ داد!",
       },
       { status: 400 },

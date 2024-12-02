@@ -13,11 +13,11 @@ export interface IBrand {
 }
 
 export interface IBrandsResponse {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   data: IBrand[];
 }
 
 export interface IBrandResponse {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   data: IBrand;
 }

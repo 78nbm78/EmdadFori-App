@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       !nationalCode
     ) {
       return NextResponse.json(
-        { status: "ERROR", message: "Invalid data!" },
+        { type: "ERROR", message: "Invalid data!" },
         { status: 400 },
       );
     }
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     if (!createExpert) {
       return NextResponse.json(
-        { status: "ERROR", message: "خطا در ایجاد متخصص!" },
+        { type: "ERROR", message: "خطا در ایجاد متخصص!" },
         { status: 404 },
       );
     }
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       });
 
       return NextResponse.json(
-        { status: "SUCCESS", message: "ثبت نام با موفقیت انجام شد!" },
+        { type: "SUCCESS", message: "ثبت نام با موفقیت انجام شد!" },
         { status: 201 },
       );
     } catch (error) {
@@ -67,14 +67,14 @@ export async function POST(request: NextRequest) {
           where: { id: createExpert.id },
         });
         return NextResponse.json(
-          { status: "ERROR", message: "لطفا یک شماره دیگر انتخاب کنید!" },
+          { type: "ERROR", message: "لطفا یک شماره دیگر انتخاب کنید!" },
           { status: 409 },
         );
       }
 
       // Handle other errors
       return NextResponse.json(
-        { status: "ERROR", message: "خطا در ایجاد کاربر!" },
+        { type: "ERROR", message: "خطا در ایجاد کاربر!" },
         { status: 400 },
       );
     }
@@ -87,14 +87,14 @@ export async function POST(request: NextRequest) {
       error.code === "P2002"
     ) {
       return NextResponse.json(
-        { status: "ERROR", message: "لطفا یک کد ملی دیگر بنویسید!" },
+        { type: "ERROR", message: "لطفا یک کد ملی دیگر بنویسید!" },
         { status: 409 },
       );
     }
 
     return NextResponse.json(
       {
-        status: "ERROR",
+        type: "ERROR",
         message: "خطایی رخ داد!",
       },
       { status: 400 },

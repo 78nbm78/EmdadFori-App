@@ -14,11 +14,11 @@ export interface IBlog {
 }
 
 export interface IBlogsResponse {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   data: IBlog[];
 }
 
 export interface IBlogResponse {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   data: IBlog;
 }

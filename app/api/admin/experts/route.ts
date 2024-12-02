@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     const jwt = request.headers.get("Authorization")?.split(" ")[1]; // token format should be 'Bearer <token>'
     if (!jwt)
       return NextResponse.json(
-        { status: "ERROR", message: "Unauthorized!" },
+        { type: "ERROR", message: "Unauthorized!" },
         { status: 401 },
       );
 
@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     } catch (error: unknown) {
       console.log(error);
       return NextResponse.json(
-        { status: "ERROR", message: "Unauthorized!" },
+        { type: "ERROR", message: "Unauthorized!" },
         { status: 401 },
       );
     }
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     const jwtValue = await JwtDecodedValue({ tokenValue: jwt });
     if (!jwtValue?.isAdmin && jwtValue?.role !== "ADMIN")
       return NextResponse.json(
-        { status: "ERROR", message: "Unauthorized!" },
+        { type: "ERROR", message: "Unauthorized!" },
         { status: 401 },
       );
 
@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
 
     if (!experts)
       return NextResponse.json(
-        { status: "ERROR", message: "متخصصی یافت نشد!" },
+        { type: "ERROR", message: "متخصصی یافت نشد!" },
         { status: 404 },
       );
 
@@ -85,7 +85,7 @@ export async function GET(request: NextRequest) {
     }));
 
     return NextResponse.json(
-      { status: "SUCCESS", data: formattedExperts },
+      { type: "SUCCESS", data: formattedExperts },
       { status: 200 },
     );
   } catch (error: unknown) {
@@ -93,7 +93,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       {
-        status: "ERROR",
+        type: "ERROR",
         message: "خطایی رخ داد!",
       },
       { status: 400 },

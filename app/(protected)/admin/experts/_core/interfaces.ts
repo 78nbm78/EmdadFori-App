@@ -15,6 +15,6 @@ export interface IExpertList {
 }
 
 export interface IExpertsResponse {
-  status: "SUCCESS" | "ERROR";
+  type: "SUCCESS" | "ERROR";
   data: IExpertList[];
 }

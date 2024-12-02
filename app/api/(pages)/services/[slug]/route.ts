@@ -18,12 +18,12 @@ export async function GET(
 
     if (!service)
       return NextResponse.json(
-        { status: "ERROR", message: "موردی یافت نشد!" },
+        { type: "ERROR", message: "موردی یافت نشد!" },
         { status: 404 },
       );
 
     return NextResponse.json(
-      { status: "SUCCESS", data: service },
+      { type: "SUCCESS", data: service },
       { status: 200 },
     );
   } catch (error: unknown) {
@@ -31,7 +31,7 @@ export async function GET(
 
     return NextResponse.json(
       {
-        status: "ERROR",
+        type: "ERROR",
         message: "خطایی رخ داد!",
       },
       { status: 400 },
