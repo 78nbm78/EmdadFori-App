@@ -17,8 +17,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
-import { ILoginInputs, ILoginResponse } from "../../_core/interfaces";
-import { AdminLoginAPI } from "../../_core/requests";
+import { ILoginInputs, ILoginResponse } from "@/interfaces/User";
+import { AdminLoginAPI } from "@/services/Auth";
 
 const AdminAuthForm = () => {
   const router = useRouter();

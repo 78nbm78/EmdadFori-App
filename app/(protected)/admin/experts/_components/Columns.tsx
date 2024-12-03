@@ -1,7 +1,6 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import type { IExpertList } from "../_core/interfaces";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { DateToJalali } from "@/utils/DateToJalali";
+import { IExpertList } from "@/interfaces/Experts";
 
 export const columns: ColumnDef<IExpertList>[] = [
   {

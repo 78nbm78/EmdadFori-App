@@ -9,9 +9,9 @@ import HeaderLogin from "./HeaderLogin";
 import MenuItems from "./MenuItems";
 import MobileMenu from "./MobileMenu";
 import { Button } from "@/components/ui/button";
-import type { IService } from "@/app/(pages)/services/_core/interfaces";
+import { IServiceType } from "@/interfaces/Services";
 
-const MainHeader = ({ services }: { services: IService[] }) => {
+const MainHeader = ({ services }: { services: IServiceType[] }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   return (

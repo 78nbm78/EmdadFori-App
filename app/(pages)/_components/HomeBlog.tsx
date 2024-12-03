@@ -1,5 +1,5 @@
 import BlogCard from "@/components/cards/BlogCard";
-import { GetFilteredBlogs } from "../blog/_core/requests";
+import { GetFilteredBlogs } from "@/services/Blog";
 
 const HomeBlog = async () => {
   const blogs = await GetFilteredBlogs({ take: 4 });

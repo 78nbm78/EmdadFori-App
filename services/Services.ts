@@ -1,4 +1,4 @@
-import type { IServiceResponse, IServicesResponse } from "./interfaces";
+import { IServiceResponse, IServicesResponse } from "@/interfaces/Services";
 
 export const GetServices = async (): Promise<IServicesResponse | undefined> => {
   try {

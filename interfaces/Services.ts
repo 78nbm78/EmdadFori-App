@@ -37,6 +37,17 @@ export const IService = z.object({
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
   content: z.string().optional(),
+  greenIcon: z.string().optional(),
 });
 
 export type IServiceType = z.infer<typeof IService>;
+
+export interface IServicesResponse {
+  type: "SUCCESS" | "ERROR";
+  data: IServiceType[];
+}
+
+export interface IServiceResponse {
+  type: "SUCCESS" | "ERROR";
+  data: IServiceType;
+}

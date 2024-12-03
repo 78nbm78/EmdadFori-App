@@ -1,7 +1,7 @@
 import PageTitle from "@/components/shared/PageTitle";
 import MainLayout from "@/layouts/MainLayout";
 import ShowServices from "./_components/ShowServices";
-import { GetServices } from "./_core/requests";
+import { GetServices } from "@/services/Services";
 
 const list = [
   { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },

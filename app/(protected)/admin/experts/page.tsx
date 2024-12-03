@@ -2,8 +2,8 @@ import AdminLayout from "@/layouts/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import AdminPageTitle from "../_components/AdminPageTitle";
 import ShowExpertsList from "./_components/ShowExpertsList";
-import { getAllExperts } from "./_core/requests";
 import { getCookieByKey } from "@/actions/cookie";
+import { getAllExperts } from "@/services/Experts";
 
 const AdminExpertsPage = async () => {
   const token = await getCookieByKey("token");

@@ -1,5 +1,5 @@
+import { IAuthVariable } from "@/interfaces/User";
 import { create } from "zustand";
-import { IAuthVariable } from "./interfaces";
 
 export const useAuthVariables = create<IAuthVariable>((set) => ({
   expertSignupForm: false,

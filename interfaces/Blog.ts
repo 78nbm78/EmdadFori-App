@@ -1,4 +1,3 @@
-import { File } from "buffer";
 import * as z from "zod";
 
 export const IBlog = z.object({
@@ -39,11 +38,17 @@ export const IBlog = z.object({
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
   content: z.string().optional(),
+  _count: z.object({ comments: z.number() }).optional(),
 });
 
 export type IBlogType = z.infer<typeof IBlog>;
 
-export type IAddBlogResponse = {
+export type IBlogResponse = {
   type: "ERROR" | "SUCCESS";
   message: string;
+  data?: IBlogType | undefined;
+};
+export type IBlogsResponse = {
+  type: "ERROR" | "SUCCESS";
+  data: IBlogType[];
 };

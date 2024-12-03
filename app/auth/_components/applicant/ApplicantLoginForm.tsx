@@ -16,11 +16,11 @@ import { useAuthVariables } from "../../_core/hooks";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { Controller, useForm, type SubmitHandler } from "react-hook-form";
-import type { ILoginInputs, ILoginResponse } from "../../_core/interfaces";
-import { ApplicantLoginAPI } from "../../_core/requests";
 // import { emailRegex } from "@/constants/regex";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { ILoginInputs, ILoginResponse } from "@/interfaces/User";
+import { ApplicantLoginAPI } from "@/services/Auth";
 
 const ApplicantLoginForm = () => {
   const { setApplicantLoginForm, setApplicantSignupForm } = useAuthVariables();

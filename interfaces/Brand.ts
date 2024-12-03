@@ -40,3 +40,13 @@ export const IBrand = z.object({
 });
 
 export type IBrandType = z.infer<typeof IBrand>;
+
+export interface IBrandsResponse {
+  type: "SUCCESS" | "ERROR";
+  data: IBrandType[];
+}
+
+export interface IBrandResponse {
+  type: "SUCCESS" | "ERROR";
+  data: IBrandType;
+}

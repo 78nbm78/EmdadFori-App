@@ -1,5 +1,5 @@
+import { GetBrands } from "@/services/Brands";
 import Image from "next/image";
-import { GetBrands } from "../brands/_core/requests";
 import Link from "next/link";
 
 const HomeBrands = async () => {
@@ -23,7 +23,9 @@ const HomeBrands = async () => {
                 className="flex flex-col gap-1 justify-center items-center text-center border border-slate-200 px-2 pt-1 pb-2 rounded-lg cursor-pointer transition hover:bg-primary/20 hover:border-primary"
               >
                 <Image
-                  src={brand.thumbnail}
+                  src={
+                    (brand.thumbnail as string) || "/images/default-cover.jpg"
+                  }
                   width={50}
                   height={50}
                   alt={`امداد ${brand.title}`}

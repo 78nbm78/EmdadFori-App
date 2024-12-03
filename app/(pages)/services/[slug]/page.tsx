@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageTitle from "@/components/shared/PageTitle";
 import MainLayout from "@/layouts/MainLayout";
-import { GetServiceBySlug } from "../_core/requests";
+import { GetServiceBySlug } from "@/services/Services";
 
 interface IProps {
   params: Promise<{ slug: string }>;
@@ -18,7 +18,9 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
       title: service?.data?.googleTitle || service?.data?.title,
       description: service?.data?.description || "",
       url: `${process.env.NEXT_PUBLIC_URL}/services/${service?.data?.slug}`,
-      images: [service?.data?.thumbnail || "/images/default-cover.jpg"],
+      images: [
+        (service?.data?.thumbnail as string) || "/images/default-cover.jpg",
+      ],
     },
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_URL}/services/${service?.data?.slug}`,

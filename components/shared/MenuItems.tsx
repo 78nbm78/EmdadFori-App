@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
-import type { IService } from "@/app/(pages)/services/_core/interfaces";
+import { IServiceType } from "@/interfaces/Services";
 
-const MenuItems = ({ services }: { services: IService[] }) => {
+const MenuItems = ({ services }: { services: IServiceType[] }) => {
   const pathname = usePathname();
 
   return (

@@ -1,4 +1,4 @@
-import type { IBrandResponse, IBrandsResponse } from "./interfaces";
+import { IBrandResponse, IBrandsResponse } from "@/interfaces/Brand";
 
 export const GetBrands = async (): Promise<IBrandsResponse | undefined> => {
   try {

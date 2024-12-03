@@ -1,7 +1,7 @@
 import BlogCard from "@/components/cards/BlogCard";
 import PageTitle from "@/components/shared/PageTitle";
 import MainLayout from "@/layouts/MainLayout";
-import { GetBlogs } from "./_core/requests";
+import { GetBlogs } from "@/services/Blog";
 
 const list = [
   { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },

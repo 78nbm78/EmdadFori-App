@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { GetServices } from "@/app/(pages)/services/_core/requests";
 import MainHeader from "@/components/shared/MainHeader";
 import MainFooter from "@/components/shared/MainFooter";
 import "@/public/css/landing.css";
+import { GetServices } from "@/services/Services";
 
 interface IProps {
   children: ReactNode;

@@ -1,4 +1,4 @@
-import type { IExpertsResponse } from "./interfaces";
+import { IExpertsResponse } from "@/interfaces/Experts";
 
 export const getAllExperts = async ({
   accessToken,

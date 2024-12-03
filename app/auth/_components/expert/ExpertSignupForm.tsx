@@ -1,15 +1,8 @@
 "use client";
 
 import { useToast } from "@/hooks/use-toast";
-import {
-  IExpertSignupInputs,
-  ILoginInputs,
-  ILoginResponse,
-  ISignupResponse,
-} from "../../_core/interfaces";
 import { Controller, useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
-import { ExpertLoginAPI, ExpertSignupAPI } from "../../_core/requests";
 import { useAuthVariables } from "../../_core/hooks";
 import {
   Card,
@@ -27,6 +20,13 @@ import { AlertCircle, EyeIcon, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { checkCodeMeli } from "@/utils/CheckMeliCode";
 import { useState } from "react";
+import {
+  IExpertSignupInputs,
+  ILoginInputs,
+  ILoginResponse,
+  ISignupResponse,
+} from "@/interfaces/User";
+import { ExpertLoginAPI, ExpertSignupAPI } from "@/services/Auth";
 
 const ExpertSignupForm = () => {
   const router = useRouter();

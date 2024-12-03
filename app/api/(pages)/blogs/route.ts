@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     // }
 
     const blogs = await db.blogs.findMany({
-      take: take || 30,
+      take: take || 50,
       select: {
         id: true,
         title: true,

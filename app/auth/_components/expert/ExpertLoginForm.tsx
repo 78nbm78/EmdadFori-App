@@ -15,11 +15,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useAuthVariables } from "../../_core/hooks";
-import { ILoginInputs, ILoginResponse } from "../../_core/interfaces";
-import { ExpertLoginAPI } from "../../_core/requests";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { ILoginInputs, ILoginResponse } from "@/interfaces/User";
+import { ExpertLoginAPI } from "@/services/Auth";
 // import { emailRegex } from "@/constants/regex";
 
 const ExpertLoginForm = () => {

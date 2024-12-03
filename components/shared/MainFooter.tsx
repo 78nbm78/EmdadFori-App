@@ -5,13 +5,14 @@ import NeedBtn from "./footer/NeedBtn";
 import FooterBrands from "./footer/FooterBrands";
 import FooterGoldCard from "./footer/FooterGoldCard";
 import FooterContact from "./footer/FooterContact";
-import { GetBrands } from "@/app/(pages)/brands/_core/requests";
-import { GetServices } from "@/app/(pages)/services/_core/requests";
+import { GetServices } from "@/services/Services";
+import { GetBrands } from "@/services/Brands";
+import { GetBlogs } from "@/services/Blog";
 
 const MainFooter = async () => {
   const services = await GetServices();
   const brands = await GetBrands();
-  // const blogs = await GetBlogs();
+  const blogs = await GetBlogs();
 
   return (
     <>
@@ -71,86 +72,20 @@ const MainFooter = async () => {
             <div className="w-full lg:w-1/2 xl:w-5/12 sm:px-3">
               <p className="font-bold text-white mb-4">مقاله های مفید</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۱
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۲
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۳
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۴
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۵
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۶
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۷
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۸
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۹
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog/sth"
-                    className="font-light text-white/80 transition hover:text-primary"
-                  >
-                    مقاله مفید شماره ۱۰
-                  </Link>
-                </li>
+                {blogs?.data?.length ? (
+                  blogs.data.map((blog) => (
+                    <li key={blog.id}>
+                      <Link
+                        href={`/blog/${blog.slug}`}
+                        className="font-light text-white/80 transition hover:text-primary"
+                      >
+                        {blog.googleTitle || blog.title || ""}
+                      </Link>
+                    </li>
+                  ))
+                ) : (
+                  <li>مقاله ای یافت نشد</li>
+                )}
               </ul>
             </div>
 

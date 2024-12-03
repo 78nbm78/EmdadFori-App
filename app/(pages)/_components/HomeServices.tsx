@@ -1,6 +1,6 @@
+import { GetServices } from "@/services/Services";
 import Image from "next/image";
 import Link from "next/link";
-import { GetServices } from "../services/_core/requests";
 
 const HomeServices = async () => {
   const services = await GetServices();

@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { IBrand } from "@/app/(pages)/brands/_core/interfaces";
+import { IBrandType } from "@/interfaces/Brand";
 
-const FooterBrands = ({ brands }: { brands: IBrand[] }) => {
+const FooterBrands = ({ brands }: { brands: IBrandType[] }) => {
   const [show, setShow] = useState<boolean>(false);
 
   return (

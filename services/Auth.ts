@@ -1,9 +1,9 @@
-import type {
+import {
   IExpertSignupInputs,
   ILoginInputs,
   ILoginResponse,
   ISignupResponse,
-} from "./interfaces";
+} from "@/interfaces/User";
 
 export const ExpertLoginAPI = async ({
   mobile,

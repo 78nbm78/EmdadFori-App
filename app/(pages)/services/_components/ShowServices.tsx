@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IService } from "../_core/interfaces";
+import { IServiceType } from "@/interfaces/Services";
 
-const ShowServices = ({ services }: { services: IService[] }) => {
+const ShowServices = ({ services }: { services: IServiceType[] }) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
       {services?.map((service) => (

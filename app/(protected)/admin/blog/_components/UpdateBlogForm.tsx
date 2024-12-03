@@ -20,25 +20,36 @@ import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { revalidateTag } from "next/cache";
-import { AddBlogAPI } from "@/services/Blog";
+import { UpdateBlogAPI } from "@/services/Blog";
 
 interface IProps {
   accessToken: string;
+  blog: IBlogType | undefined;
+  pageSlug: string;
 }
 
-const AddBlogForm = ({ accessToken }: IProps) => {
+const UpdateBlogForm = ({ accessToken, blog, pageSlug }: IProps) => {
   const router = useRouter();
 
   const form = useForm<IBlogType>({
     resolver: zodResolver(IBlog),
+    defaultValues: {
+      title: blog?.title || "",
+      slug: blog?.slug || "",
+      googleTitle: blog?.googleTitle || "",
+      description: blog?.description || "",
+      thumbnail: blog?.thumbnail || "",
+      content: blog?.content || "",
+    },
   });
 
   const onSubmit = async (data: IBlogType) => {
     try {
       data.slug = data.slug.split(" ").join("-").toLowerCase();
 
-      const response: IBlogResponse | undefined = await AddBlogAPI({
+      const response: IBlogResponse | undefined = await UpdateBlogAPI({
         accessToken,
+        pageSlug,
         data,
       });
 
@@ -231,4 +242,4 @@ const AddBlogForm = ({ accessToken }: IProps) => {
   );
 };
 
-export default AddBlogForm;
+export default UpdateBlogForm;

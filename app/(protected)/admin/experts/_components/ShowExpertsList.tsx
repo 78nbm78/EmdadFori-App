@@ -1,6 +1,6 @@
 "use client";
 
-import { IExpertList } from "../_core/interfaces";
+import { IExpertList } from "@/interfaces/Experts";
 import { columns } from "./Columns";
 import { DataTable } from "./DataTable";
 

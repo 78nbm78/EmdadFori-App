@@ -1,4 +1,4 @@
-import type { IBlogResponse, IBlogsResponse } from "./interfaces";
+import { IBlogResponse, IBlogsResponse, IBlogType } from "@/interfaces/Blog";
 
 export const GetBlogs = async (): Promise<IBlogsResponse | undefined> => {
   try {
@@ -63,6 +63,60 @@ export const GetBlogBySlug = async ({
       console.log("Faild to get blog data!");
       return;
     }
+
+    return await response.json();
+  } catch (error: unknown) {
+    console.log(error);
+  }
+};
+
+interface IAddProps {
+  accessToken: string;
+  data: IBlogType;
+}
+export const AddBlogAPI = async ({
+  accessToken,
+  data,
+}: IAddProps): Promise<IBlogResponse | undefined> => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    return await response.json();
+  } catch (error: unknown) {
+    console.log(error);
+  }
+};
+
+interface IUpdateProps extends IAddProps {
+  pageSlug: string;
+}
+
+export const UpdateBlogAPI = async ({
+  accessToken,
+  pageSlug,
+  data,
+}: IUpdateProps): Promise<IBlogResponse | undefined> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/blogs/${pageSlug}`,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
 
     return await response.json();
   } catch (error: unknown) {
