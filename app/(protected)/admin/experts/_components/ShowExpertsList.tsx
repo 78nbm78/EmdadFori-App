@@ -6,10 +6,11 @@ import { DataTable } from "./DataTable";
 
 interface IProps {
   experts: IExpertList[] | undefined;
+  accessToken: string;
 }
 
-const ShowExpertsList: React.FC<IProps> = ({ experts }) => {
-  return <DataTable columns={columns} data={experts || []} />;
+const ShowExpertsList: React.FC<IProps> = ({ experts, accessToken }) => {
+  return <DataTable columns={columns({ accessToken })} data={experts || []} />;
 };
 
 export default ShowExpertsList;

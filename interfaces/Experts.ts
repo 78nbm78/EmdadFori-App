@@ -18,3 +18,9 @@ export interface IExpertsResponse {
   type: "SUCCESS" | "ERROR";
   data: IExpertList[];
 }
+
+export interface IExpertActivationResponse {
+  type: "SUCCESS" | "ERROR";
+  message: string;
+  isActive: boolean;
+}

@@ -15,7 +15,10 @@ const AdminEditBlogPage = async ({ params }: IProps) => {
 
   return (
     <AdminLayout>
-      <AdminPageTitle title={`ویرایش مقاله ${params.slug}`} description="..." />
+      <AdminPageTitle
+        title={`ویرایش ${blog?.data?.title}`}
+        description={blog?.data?.description}
+      />
 
       <section>
         <Card>

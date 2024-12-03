@@ -18,6 +18,7 @@ export async function GET(request: NextRequest) {
     // }
 
     const blogs = await db.blogs.findMany({
+      where: { isPublished: true },
       take: take || 50,
       select: {
         id: true,
@@ -28,6 +29,7 @@ export async function GET(request: NextRequest) {
         googleTitle: true,
         createdAt: true,
         updatedAt: true,
+        isPublished: true,
         _count: {
           select: {
             comments: true,
@@ -86,6 +88,7 @@ export async function POST(request: NextRequest) {
         thumbnail: (data.thumbnail as string) || "",
         googleTitle: data.googleTitle,
         content: data.content,
+        isPublished: data.isPublished,
       },
     });
 

@@ -1,34 +1,13 @@
 export const dynamic = "force-dynamic";
 
 import { NextResponse, type NextRequest } from "next/server";
-import * as jose from "jose";
 import db from "@/lib/db";
-import { JwtDecodedValue } from "@/actions/auth";
+import { AdminAuthChecker } from "@/utils/AdminAuthChecker";
 
 export async function GET(request: NextRequest) {
   try {
-    const jwt = request.headers.get("Authorization")?.split(" ")[1]; // token format should be 'Bearer <token>'
-    if (!jwt)
-      return NextResponse.json(
-        { type: "ERROR", message: "Unauthorized!" },
-        { status: 401 },
-      );
-
-    // Verify JWT token
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-    try {
-      await jose.jwtVerify(jwt, secret);
-    } catch (error: unknown) {
-      console.log(error);
-      return NextResponse.json(
-        { type: "ERROR", message: "Unauthorized!" },
-        { status: 401 },
-      );
-    }
-
-    // Admin Verification
-    const jwtValue = await JwtDecodedValue({ tokenValue: jwt });
-    if (!jwtValue?.isAdmin && jwtValue?.role !== "ADMIN")
+    const checkAuth = await AdminAuthChecker(request);
+    if (!checkAuth)
       return NextResponse.json(
         { type: "ERROR", message: "Unauthorized!" },
         { status: 401 },

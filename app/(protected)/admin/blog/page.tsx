@@ -4,10 +4,12 @@ import AdminPageTitle from "../_components/AdminPageTitle";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ShowBlogList from "./_components/ShowBlogList";
-import { GetBlogs } from "@/services/Blog";
+import { AdminGetBlogs } from "@/services/Blog";
+import { getCookieByKey } from "@/actions/cookie";
 
 const AdminBlogPage = async () => {
-  const blogs = await GetBlogs();
+  const token = await getCookieByKey("token");
+  const blogs = await AdminGetBlogs(token || "");
 
   return (
     <AdminLayout>

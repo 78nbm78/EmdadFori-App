@@ -37,6 +37,8 @@ export const IBrand = z.object({
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
   content: z.string().optional(),
+  isPublished: z.boolean().optional(),
+  _count: z.object({ comments: z.number() }).optional(),
 });
 
 export type IBrandType = z.infer<typeof IBrand>;

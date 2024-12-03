@@ -71,6 +71,7 @@ export async function PUT(
         thumbnail: (data.thumbnail as string) || "",
         googleTitle: data.googleTitle,
         content: data.content,
+        isPublished: data.isPublished,
       },
     });
 

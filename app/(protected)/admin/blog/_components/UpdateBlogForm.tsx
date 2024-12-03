@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { UpdateBlogAPI } from "@/services/Blog";
 import RevalidateByTag from "@/actions/revalidate";
+import { Switch } from "@/components/ui/switch";
 
 interface IProps {
   accessToken: string;
@@ -40,6 +41,7 @@ const UpdateBlogForm = ({ accessToken, blog, pageSlug }: IProps) => {
       description: blog?.description || "",
       thumbnail: blog?.thumbnail || "",
       content: blog?.content || "",
+      isPublished: blog?.isPublished || false,
     },
   });
 
@@ -167,6 +169,28 @@ const UpdateBlogForm = ({ accessToken, blog, pageSlug }: IProps) => {
             )}
           />
         </div>
+        <div className="w-full sm:w-1/2 px-3 mb-6">
+          <FormField
+            control={form.control}
+            name="isPublished"
+            render={({ field: { onChange, ref, value } }) => (
+              <FormItem>
+                <FormLabel className="inline-block my-3">
+                  وضعیت انتشار
+                </FormLabel>
+                <br />
+                <FormControl>
+                  <Switch
+                    onCheckedChange={onChange}
+                    ref={ref}
+                    checked={value}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <div className="w-full px-3 mb-6">
           <FormField
             control={form.control}
@@ -203,7 +227,7 @@ const UpdateBlogForm = ({ accessToken, blog, pageSlug }: IProps) => {
                   <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
-                  <ImageUpload {...field} />
+                  <ImageUpload {...field} accessToken={accessToken} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

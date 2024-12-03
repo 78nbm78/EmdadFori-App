@@ -82,6 +82,7 @@ async function main() {
         thumbnail: null,
         slug: `blog-${[i]}`,
         description: `blog description ${[i]}`,
+        isPublished: true,
       },
     });
   }

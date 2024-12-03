@@ -19,7 +19,10 @@ const AdminExpertsPage = async () => {
       <section>
         <Card>
           <CardContent className="pt-6">
-            <ShowExpertsList experts={experts?.data || []} />
+            <ShowExpertsList
+              experts={experts?.data || []}
+              accessToken={token || ""}
+            />
           </CardContent>
         </Card>
       </section>

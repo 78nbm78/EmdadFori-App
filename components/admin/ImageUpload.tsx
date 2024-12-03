@@ -6,14 +6,9 @@ import Image from "next/image";
 import { Input } from "../ui/input";
 import { validateThumbnailFile } from "@/utils/ValidateFileUpload";
 
-interface IProps {
-  onChange: (data: string) => void;
-  name: string;
-  value?: string | null | undefined;
-}
-
 const uploadToS3 = async (
   file: File,
+  accessToken: string,
 ): Promise<{ type: "ERROR" | "SUCCESS"; message: string; url?: string }> => {
   try {
     const formData = new FormData();
@@ -22,6 +17,9 @@ const uploadToS3 = async (
     // Send the file to the API route
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/upload`, {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
       body: formData,
     });
 
@@ -38,11 +36,18 @@ const uploadToS3 = async (
   }
 };
 
+interface IProps {
+  onChange: (data: string) => void;
+  name: string;
+  value?: string | null | undefined;
+  accessToken: string;
+}
+
 const ImageUpload = forwardRef<HTMLInputElement, IProps>(
-  ({ name, onChange, value }, ref) => {
+  ({ name, onChange, value, accessToken }, ref) => {
     const uploadHandler = async (file: File) => {
       try {
-        const result = await uploadToS3(file);
+        const result = await uploadToS3(file, accessToken);
 
         if (!result || result?.type === "ERROR") {
           toast({

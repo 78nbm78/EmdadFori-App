@@ -20,6 +20,32 @@ export const GetBlogs = async (): Promise<IBlogsResponse | undefined> => {
   }
 };
 
+export const AdminGetBlogs = async (
+  accessToken: string,
+): Promise<IBlogsResponse | undefined> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/admin/blogs`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        cache: "no-store",
+      },
+    );
+
+    if (!response.ok) {
+      console.log("Faild to get blogs data!");
+      return;
+    }
+
+    return await response.json();
+  } catch (error: unknown) {
+    console.log(error);
+  }
+};
+
 export const GetFilteredBlogs = async ({
   take,
 }: {

@@ -38,6 +38,8 @@ export const IService = z.object({
   updatedAt: z.string().optional(),
   content: z.string().optional(),
   greenIcon: z.string().optional(),
+  isPublished: z.boolean().optional(),
+  _count: z.object({ comments: z.number() }).optional(),
 });
 
 export type IServiceType = z.infer<typeof IService>;

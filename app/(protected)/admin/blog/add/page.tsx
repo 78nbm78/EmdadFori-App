@@ -9,7 +9,10 @@ const AdminAddBlogPage = async () => {
 
   return (
     <AdminLayout>
-      <AdminPageTitle title={`افزودن مقاله جدید`} description="." />
+      <AdminPageTitle
+        title={`افزودن مقاله جدید`}
+        description="یک مقاله جدید به بلاگ اضافه کنید."
+      />
 
       <section>
         <Card>
