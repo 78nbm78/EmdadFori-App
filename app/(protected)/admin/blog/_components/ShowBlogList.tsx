@@ -10,8 +10,6 @@ interface IProps {
 }
 
 const ShowBlogList: React.FC<IProps> = ({ blogs }) => {
-  console.log(blogs);
-
   return (
     <ul className="space-y-2">
       {blogs?.length ? (

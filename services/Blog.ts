@@ -5,7 +5,7 @@ export const GetBlogs = async (): Promise<IBlogsResponse | undefined> => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`, {
       method: "GET",
       next: {
-        tags: ["blogs-data"],
+        tags: ["blogsData"],
       },
     });
 

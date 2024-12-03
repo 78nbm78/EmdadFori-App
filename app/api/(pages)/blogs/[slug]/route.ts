@@ -82,7 +82,7 @@ export async function PUT(
 
     return NextResponse.json(
       { type: "SUCCESS", message: "صفحه با موفقیت ویرایش شد!" },
-      { status: 202 },
+      { status: 200 },
     );
   } catch (error) {
     console.log(error instanceof Error && error.message);

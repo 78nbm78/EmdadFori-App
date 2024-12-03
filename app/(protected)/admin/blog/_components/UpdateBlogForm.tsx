@@ -19,8 +19,8 @@ import {
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import ImageUpload from "@/components/admin/ImageUpload";
-import { revalidateTag } from "next/cache";
 import { UpdateBlogAPI } from "@/services/Blog";
+import RevalidateByTag from "@/actions/revalidate";
 
 interface IProps {
   accessToken: string;
@@ -69,7 +69,9 @@ const UpdateBlogForm = ({ accessToken, blog, pageSlug }: IProps) => {
         return;
       }
 
-      revalidateTag("blogs-data");
+      console.log(response);
+
+      await RevalidateByTag("blogsData");
 
       toast({
         variant: "success",
