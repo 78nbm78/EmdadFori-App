@@ -13,8 +13,6 @@ export async function PUT(request: NextRequest) {
 
     const { expertId, isActive } = await request.json();
 
-    console.log(expertId, isActive);
-
     if (!expertId) {
       return NextResponse.json(
         { type: "ERROR", message: "Invalid expert id!" },

@@ -149,3 +149,34 @@ export const UpdateBlogAPI = async ({
     console.log(error);
   }
 };
+
+interface IDeleteBlog {
+  accessToken: string;
+  pageSlug: string;
+}
+
+interface IResponse {
+  type: "SUCCESS" | "ERROR";
+  message: string;
+}
+
+export const DeleteBlogBySlug = async ({
+  accessToken,
+  pageSlug,
+}: IDeleteBlog): Promise<IResponse | undefined> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/blogs/${pageSlug}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+
+    return await response.json();
+  } catch (error: unknown) {
+    console.log(error);
+  }
+};

@@ -97,3 +97,44 @@ export async function PUT(
     );
   }
 }
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> },
+) {
+  try {
+    const slug = (await params).slug;
+
+    const checkAuth = await AdminAuthChecker(request);
+    if (!checkAuth)
+      return NextResponse.json(
+        { type: "ERROR", message: "Unauthorized!" },
+        { status: 401 },
+      );
+
+    const deleteBlog = await db.blogs.delete({
+      where: { slug },
+    });
+
+    if (!deleteBlog)
+      return NextResponse.json(
+        { type: "ERROR", message: "خطایی رخ داد! لطفا بعدا تلاش کنید." },
+        { status: 400 },
+      );
+
+    return NextResponse.json(
+      { type: "SUCCESS", message: "با موفقیت حذف شد!" },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.log(error instanceof Error && error.message);
+
+    return NextResponse.json(
+      {
+        type: "ERROR",
+        message: "خطایی رخ داد!",
+      },
+      { status: 400 },
+    );
+  }
+}

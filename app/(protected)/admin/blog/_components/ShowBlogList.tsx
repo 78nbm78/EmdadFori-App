@@ -14,12 +14,14 @@ import { DateToJalali } from "@/utils/DateToJalali";
 import { Check, PenBox, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import DeleteBlogBtn from "./DeleteBlogBtn";
 
 interface IProps {
   blogs: IBlogType[];
+  accessToken: string;
 }
 
-const ShowBlogList: React.FC<IProps> = ({ blogs }) => {
+const ShowBlogList: React.FC<IProps> = ({ blogs, accessToken }) => {
   return (
     <Table>
       <TableHeader>
@@ -63,12 +65,17 @@ const ShowBlogList: React.FC<IProps> = ({ blogs }) => {
                   <X className="text-red-500 m-auto" size="20" />
                 )}
               </TableCell>
-              <TableCell className="text-end">
+              <TableCell className="text-end flex gap-4">
                 <Button asChild variant="outline" size="icon">
                   <Link href={`/admin/blog/edit/${blog.slug}`}>
                     <PenBox />
                   </Link>
                 </Button>
+                <DeleteBlogBtn
+                  accessToken={accessToken}
+                  pageSlug={blog.slug}
+                  pageTitle={blog.title}
+                />
               </TableCell>
             </TableRow>
           ))

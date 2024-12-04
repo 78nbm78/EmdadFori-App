@@ -7,6 +7,16 @@ import { deleteCookieByKey } from "@/actions/cookie";
 import Image from "next/image";
 import AvatarImage from "@/public/images/user-avatar.svg";
 import { toast } from "@/hooks/use-toast";
+import {
+  CarFront,
+  ClipboardListIcon,
+  KeySquare,
+  LayoutDashboard,
+  Logs,
+  Rss,
+  ShieldPlus,
+  Users2,
+} from "lucide-react";
 
 interface IProps {
   premiumCount?: number | 0;
@@ -48,17 +58,19 @@ const AdminSidebar = ({ jobsCount, premiumCount }: IProps) => {
         <ul>
           <li>
             <Link
-              className={`${pathname === "/admin" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname === "/admin" ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin"
             >
+              <LayoutDashboard size={18} />
               داشبورد
             </Link>
           </li>
           <li>
             <Link
-              className={`${pathname.includes("/admin/jobs") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/jobs") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/jobs"
             >
+              <Logs size={18} />
               درخواست‌های امداد
               <span className="rounded-full w-4 h-4 bg-red-500 text-xs align-top ms-2 text-white inline-flex items-center justify-center">
                 {jobsCount || 0}
@@ -67,9 +79,10 @@ const AdminSidebar = ({ jobsCount, premiumCount }: IProps) => {
           </li>
           <li>
             <Link
-              className={`${pathname.includes("/admin/premium-card") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/premium-card") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/premium-card"
             >
+              <ShieldPlus size={18} />
               درخواست‌های کارت طلایی
               <span className="rounded-full w-4 h-4 bg-red-500 text-xs align-top ms-2 text-white inline-flex items-center justify-center">
                 {premiumCount || 0}
@@ -78,41 +91,46 @@ const AdminSidebar = ({ jobsCount, premiumCount }: IProps) => {
           </li>
           <li>
             <Link
-              className={`${pathname.includes("/admin/experts") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/experts") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/experts"
             >
+              <CarFront size={18} />
               لیست متخصصین
             </Link>
           </li>
           <li>
             <Link
-              className={`${pathname.includes("/admin/applicants") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/applicants") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/applicants"
             >
+              <Users2 size={18} />
               لیست کاربران
             </Link>
           </li>
           <li>
             <Link
-              className={`${pathname.includes("/admin/blog") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/blog") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/blog"
             >
+              <Rss size={18} />
               مدیریت بلاگ
             </Link>
           </li>
           <li>
             <Link
-              className={`${pathname.includes("/admin/services") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/services") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/services"
             >
+              <ClipboardListIcon size={18} />
               مدیریت خدمات
             </Link>
           </li>
           <li>
             <Link
-              className={`${pathname.includes("/admin/brands") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm block transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
+              className={`${pathname.includes("/admin/brands") ? "text-primary bg-primary/15" : "text-slate-800"} font-medium text-sm flex items-center gap-2 transition hover:bg-primary/15 hover:text-primary py-3 px-4`}
               href="/admin/brands"
             >
+              <KeySquare size={18} />
               مدیریت برندها
             </Link>
           </li>

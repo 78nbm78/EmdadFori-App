@@ -25,7 +25,7 @@ const AdminBlogPage = async () => {
               </Button>
             </div>
 
-            <ShowBlogList blogs={blogs?.data || []} />
+            <ShowBlogList blogs={blogs?.data || []} accessToken={token || ""} />
           </CardContent>
         </Card>
       </section>

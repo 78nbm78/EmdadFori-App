@@ -71,8 +71,6 @@ const UpdateBlogForm = ({ accessToken, blog, pageSlug }: IProps) => {
         return;
       }
 
-      console.log(response);
-
       await RevalidateByTag("blogsData");
 
       toast({
