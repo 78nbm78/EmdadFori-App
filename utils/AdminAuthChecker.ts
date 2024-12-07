@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
 import * as jose from "jose";
 import { IDecodedToken } from "@/actions/auth";
 import { jwtDecode } from "jwt-decode";

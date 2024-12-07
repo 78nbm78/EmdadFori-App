@@ -22,7 +22,7 @@ const AdminBrandsPage = async () => {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-5 sm:mb-6">
-              <p className="font-bold mb-0">لیست مقالات</p>
+              <p className="font-bold mb-0">لیست برندها</p>
               <Button asChild variant="secondary" size="sm">
                 <Link href="/admin/brands/add">افزودن برند جدید</Link>
               </Button>

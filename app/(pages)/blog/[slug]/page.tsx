@@ -25,10 +25,10 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
     },
-  }
+  };
 }
 
-const SingleBlogPage= async ({ params }: IProps) => {
+const SingleBlogPage = async ({ params }: IProps) => {
   const slug = params.slug;
   const blog = await GetBlogBySlug({ slug: decodeURI(slug) });
 

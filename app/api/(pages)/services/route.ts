@@ -1,10 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import db from "@/lib/db";
 import { AdminAuthChecker } from "@/utils/AdminAuthChecker";
+import { IService, IServiceType } from "@/interfaces/Services";
 
 export async function GET() {
   try {
     const services = await db.services.findMany({
+      where: { isPublished: true },
       select: {
         id: true,
         title: true,
@@ -61,28 +63,36 @@ export async function POST(request: NextRequest) {
         { status: 401 },
       );
 
-    const { title, description, slug, thumbnail, googleTitle, content } =
-      await request.json();
+    const data: IServiceType = await request.json();
+
+    const validation = IService.safeParse(data);
+    if (!validation.success) {
+      return NextResponse.json(
+        { type: "ERROR", message: "Invalid data!" },
+        { status: 400 },
+      );
+    }
 
     const createService = await db.services.create({
       data: {
-        title,
-        description,
-        slug: decodeURI(slug),
-        thumbnail,
-        googleTitle,
-        content,
+        title: data.title,
+        description: data.description,
+        slug: decodeURI(data.slug),
+        thumbnail: (data.thumbnail as string) || "",
+        googleTitle: data.googleTitle,
+        content: data.content,
+        isPublished: data.isPublished,
       },
     });
 
     if (!createService)
       return NextResponse.json(
-        { type: "ERROR", message: "Failed to create service!" },
+        { type: "ERROR", message: "خطایی رخ داد! لطفا بعدا تلاش کنید." },
         { status: 400 },
       );
 
     return NextResponse.json(
-      { type: "SUCCESS", data: createService },
+      { type: "SUCCESS", message: "صفحه با موفقیت ایجاد شد!", data: data },
       { status: 201 },
     );
   } catch (error) {

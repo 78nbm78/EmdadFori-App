@@ -12,7 +12,11 @@ const ShowServices = ({ services }: { services: IServiceType[] }) => {
           href={`/services/${service.slug || ""}`}
         >
           <Image
-            src={service.greenIcon || ""}
+            src={
+              service.greenIcon ||
+              service.thumbnail ||
+              "/images/default-cover.jpg"
+            }
             alt={service.title || ""}
             title={service.title || ""}
             width={44}

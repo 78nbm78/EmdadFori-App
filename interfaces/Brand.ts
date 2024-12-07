@@ -4,16 +4,16 @@ export const IBrand = z.object({
   id: z.number().optional(),
   title: z
     .string({ message: "عنوان صفحه را وارد کنید" })
-    .min(5, { message: "عنوان باید حداقل ۵ کاراکتر باشد" })
+    .min(1, { message: "عنوان باید حداقل ۵ کاراکتر باشد" })
     .max(100, { message: "عنوان نباید بیشتر از ۱۰۰ کاراکتر باشد" }),
   googleTitle: z
     .string()
-    .min(5, { message: "عنوان گوگل باید حداقل ۵ کاراکتر باشد" })
+    .min(2, { message: "عنوان گوگل باید حداقل ۵ کاراکتر باشد" })
     .max(100, { message: "عنوان گوگل نباید بیشتر از ۱۰۰ کاراکتر باشد" })
     .optional(),
   slug: z
     .string({ message: "آدرس صفحه را وارد کنید" })
-    .min(5, { message: "آدرس صفحه باید حداقل ۵ کاراکتر باشد" })
+    .min(1, { message: "آدرس صفحه باید حداقل ۵ کاراکتر باشد" })
     .max(100, { message: "آدرس صفحه نباید بیشتر از ۱۰۰ کاراکتر باشد" }),
   description: z
     .string({ message: "توضیحات مختصر را وارد کنید" })
