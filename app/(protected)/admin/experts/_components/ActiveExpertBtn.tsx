@@ -40,6 +40,7 @@ function ActiveExpertBtn({ expertId, username, accessToken }: IProps) {
           variant: "destructive",
           title: "خطایی پیش آمد! لطفا بعدا تلاش کنید.",
         });
+        return;
       }
 
       toast({

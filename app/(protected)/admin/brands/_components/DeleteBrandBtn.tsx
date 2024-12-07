@@ -15,8 +15,8 @@ import {
 import { useTransition } from "react";
 import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-import { DeleteBlogBySlug } from "@/services/Blog";
 import RevalidateByTag from "@/actions/revalidate";
+import { DeleteBrandBySlug } from "@/services/Brands";
 
 interface IProps {
   pageSlug: string;
@@ -24,13 +24,13 @@ interface IProps {
   accessToken: string;
 }
 
-function DeleteBlogBtn({ pageSlug, pageTitle, accessToken }: IProps) {
+function DeleteBrandBtn({ pageSlug, pageTitle, accessToken }: IProps) {
   const [loading, startTransition] = useTransition();
   const router = useRouter();
 
-  async function deleteBlog() {
+  async function deleteBrand() {
     try {
-      const response = await DeleteBlogBySlug({ accessToken, pageSlug });
+      const response = await DeleteBrandBySlug({ accessToken, pageSlug });
 
       if (!response || response.type === "ERROR") {
         toast({
@@ -40,7 +40,7 @@ function DeleteBlogBtn({ pageSlug, pageTitle, accessToken }: IProps) {
         return;
       }
 
-      await RevalidateByTag("blogsData");
+      await RevalidateByTag("brandsData");
 
       toast({
         variant: "success",
@@ -74,7 +74,7 @@ function DeleteBlogBtn({ pageSlug, pageTitle, accessToken }: IProps) {
             disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              startTransition(deleteBlog);
+              startTransition(deleteBrand);
             }}
           >
             حذف صفحه {loading && <Loader2 className="animate-spin" />}
@@ -85,4 +85,4 @@ function DeleteBlogBtn({ pageSlug, pageTitle, accessToken }: IProps) {
   );
 }
 
-export default DeleteBlogBtn;
+export default DeleteBrandBtn;

@@ -63,11 +63,11 @@ export async function PUT(
     }
 
     const updateBlog = await db.blogs.update({
-      where: { slug },
+      where: { slug: decodeURI(slug) },
       data: {
         title: data.title,
         description: data.description,
-        slug: data.slug,
+        slug: decodeURI(data.slug),
         thumbnail: (data.thumbnail as string) || "",
         googleTitle: data.googleTitle,
         content: data.content,
@@ -113,7 +113,7 @@ export async function DELETE(
       );
 
     const deleteBlog = await db.blogs.delete({
-      where: { slug },
+      where: { slug: decodeURI(slug) },
     });
 
     if (!deleteBlog)

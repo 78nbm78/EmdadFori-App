@@ -19,21 +19,22 @@ export const IBrand = z.object({
     .string({ message: "توضیحات مختصر را وارد کنید" })
     .min(120, { message: "توضیحات باید حداقل ۱۲۰ کاراکتر باشد" })
     .max(240, { message: "توضیحات نباید بیشتر از ۲۴۰ کاراکتر باشد" }),
-  thumbnail: z.lazy(() =>
-    z.union([
-      z
-        .string({ message: "لطفا یک عکس آپلود کنید" })
-        .url({ message: "فرمت آدرس باید صحیح باشد" }),
-      z
-        .instanceof(File)
-        .refine(
-          (file) => file.size < 1048576 && file.type.startsWith("image/"),
-          {
-            message: "لطفا فرمت عکس آپلود کرده و حجم آن کمتر از ۱ مگابایت باشد",
-          },
-        ),
-    ]),
-  ),
+  // thumbnail: z.lazy(() =>
+  //   z.union([
+  //     z
+  //       .string({ message: "لطفا یک عکس آپلود کنید" })
+  //       .url({ message: "فرمت آدرس باید صحیح باشد" }),
+  //     z
+  //       .instanceof(File)
+  //       .refine(
+  //         (file) => file.size < 1048576 && file.type.startsWith("image/"),
+  //         {
+  //           message: "لطفا فرمت عکس آپلود کرده و حجم آن کمتر از ۱ مگابایت باشد",
+  //         },
+  //       ),
+  //   ]),
+  // ),
+  thumbnail: z.string({ message: "لطفا یک عکس آپلود کنید" }),
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
   content: z.string().optional(),
@@ -43,12 +44,13 @@ export const IBrand = z.object({
 
 export type IBrandType = z.infer<typeof IBrand>;
 
+export interface IBrandResponse {
+  type: "SUCCESS" | "ERROR";
+  message: string;
+  data?: IBrandType | undefined;
+}
+
 export interface IBrandsResponse {
   type: "SUCCESS" | "ERROR";
   data: IBrandType[];
-}
-
-export interface IBrandResponse {
-  type: "SUCCESS" | "ERROR";
-  data: IBrandType;
 }

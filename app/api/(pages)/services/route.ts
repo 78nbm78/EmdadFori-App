@@ -65,7 +65,14 @@ export async function POST(request: NextRequest) {
       await request.json();
 
     const createService = await db.services.create({
-      data: { title, description, slug, thumbnail, googleTitle, content },
+      data: {
+        title,
+        description,
+        slug: decodeURI(slug),
+        thumbnail,
+        googleTitle,
+        content,
+      },
     });
 
     if (!createService)

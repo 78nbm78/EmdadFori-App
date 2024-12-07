@@ -7,7 +7,7 @@ export const GetServices = async (): Promise<IServicesResponse | undefined> => {
       {
         method: "GET",
         next: {
-          tags: ["services-data"],
+          tags: ["servicesData"],
         },
       },
     );

@@ -1,19 +1,31 @@
 import AdminLayout from "@/layouts/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import AdminPageTitle from "../../../_components/AdminPageTitle";
+import { getCookieByKey } from "@/actions/cookie";
+import { GetBrandBySlug } from "@/services/Brands";
+import UpdateBrandForm from "../../_components/UpdateBrandForm";
 
 interface IProps {
   params: { slug: string };
 }
 
-const AdminEditBrandPage = ({ params }: IProps) => {
+const AdminEditBrandPage = async ({ params }: IProps) => {
+  const token = await getCookieByKey("token");
+  const brand = await GetBrandBySlug({ slug: params.slug });
+
   return (
     <AdminLayout>
-      <AdminPageTitle title={`ویرایش برند ${params.slug}`} description="..." />
+      <AdminPageTitle title={`ویرایش ${params.slug}`} description="..." />
 
       <section>
         <Card>
-          <CardContent className="pt-6">...</CardContent>
+          <CardContent className="pt-6">
+            <UpdateBrandForm
+              accessToken={token || ""}
+              brand={brand?.data}
+              pageSlug={params.slug}
+            />
+          </CardContent>
         </Card>
       </section>
     </AdminLayout>

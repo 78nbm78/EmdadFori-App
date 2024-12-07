@@ -54,6 +54,7 @@ async function main() {
         slug: service.slug,
         greenIcon: service.greenIcon,
         description: service.description,
+        isPublished: true,
       },
     });
   }
@@ -68,6 +69,7 @@ async function main() {
         thumbnail: brand.thumbnail,
         slug: brand.slug,
         description: brand.description,
+        isPublished: true,
       },
     });
   }

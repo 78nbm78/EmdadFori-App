@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       data: {
         title: data.title,
         description: data.description,
-        slug: data.slug,
+        slug: decodeURI(data.slug),
         thumbnail: (data.thumbnail as string) || "",
         googleTitle: data.googleTitle,
         content: data.content,
