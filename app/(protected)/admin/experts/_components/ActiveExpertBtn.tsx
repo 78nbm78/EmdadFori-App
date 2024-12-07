@@ -54,10 +54,6 @@ function ActiveExpertBtn({ expertId, username, accessToken }: IProps) {
     }
   }
 
-  const handleActivation = () => {
-    activeExpert();
-  };
-
   return (
     <AlertDialog>
       <AlertDialogTrigger className="w-full text-start">
@@ -79,7 +75,7 @@ function ActiveExpertBtn({ expertId, username, accessToken }: IProps) {
             disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              startTransition(handleActivation);
+              startTransition(activeExpert);
             }}
           >
             فعال سازی متخصص {loading && <Loader2 className="animate-spin" />}

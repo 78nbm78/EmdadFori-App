@@ -54,10 +54,6 @@ function DeActiveExpertBtn({ expertId, username, accessToken }: IProps) {
     }
   }
 
-  const handleDeActivation = () => {
-    deActiveExpert();
-  };
-
   return (
     <AlertDialog>
       <AlertDialogTrigger>غیر فعال کردن حساب</AlertDialogTrigger>
@@ -78,7 +74,7 @@ function DeActiveExpertBtn({ expertId, username, accessToken }: IProps) {
             disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              startTransition(handleDeActivation);
+              startTransition(deActiveExpert);
             }}
           >
             غیر فعال سازی حساب {loading && <Loader2 className="animate-spin" />}

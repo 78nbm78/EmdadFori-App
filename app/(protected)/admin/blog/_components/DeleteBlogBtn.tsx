@@ -56,10 +56,6 @@ function DeleteBlogBtn({ pageSlug, pageTitle, accessToken }: IProps) {
     }
   }
 
-  const startDeleteProcess = () => {
-    handleDelete();
-  };
-
   return (
     <AlertDialog>
       <AlertDialogTrigger>
@@ -81,7 +77,7 @@ function DeleteBlogBtn({ pageSlug, pageTitle, accessToken }: IProps) {
             disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              startTransition(startDeleteProcess);
+              startTransition(handleDelete);
             }}
           >
             حذف صفحه {loading && <Loader2 className="animate-spin" />}

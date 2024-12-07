@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextResponse, type NextRequest } from "next/server";
 import db from "@/lib/db";
 import { AdminAuthChecker } from "@/utils/AdminAuthChecker";
