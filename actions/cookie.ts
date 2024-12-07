@@ -5,11 +5,11 @@ import { cookies } from "next/headers";
 export async function getCookieByKey(
   name: string,
 ): Promise<string | undefined> {
-  return (await cookies()).get(name)?.value;
+  return cookies().get(name)?.value;
 }
 
 export async function getAllCookies() {
-  return (await cookies()).getAll();
+  return cookies().getAll();
 }
 
 interface IKeyAndValue {
@@ -21,7 +21,7 @@ export async function setCookieByKeyAndValue({
   value,
 }: IKeyAndValue): Promise<void> {
   // (await cookies()).set(key, value);
-  (await cookies()).set({
+  cookies().set({
     name: key,
     value: value,
     httpOnly: true,
@@ -31,5 +31,5 @@ export async function setCookieByKeyAndValue({
 }
 
 export async function deleteCookieByKey(key: string): Promise<void> {
-  (await cookies()).delete(key);
+  cookies().delete(key);
 }
