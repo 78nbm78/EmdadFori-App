@@ -28,7 +28,7 @@ function DeleteBrandBtn({ pageSlug, pageTitle, accessToken }: IProps) {
   const [loading, startTransition] = useTransition();
   const router = useRouter();
 
-  async function deleteBrand() {
+  async function handleDelete() {
     try {
       const response = await DeleteBrandBySlug({
         accessToken,
@@ -56,6 +56,10 @@ function DeleteBrandBtn({ pageSlug, pageTitle, accessToken }: IProps) {
     }
   }
 
+  const startDeleteProcess = () => {
+    handleDelete();
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger>
@@ -77,7 +81,7 @@ function DeleteBrandBtn({ pageSlug, pageTitle, accessToken }: IProps) {
             disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              startTransition(deleteBrand);
+              startTransition(startDeleteProcess);
             }}
           >
             حذف صفحه {loading && <Loader2 className="animate-spin" />}
