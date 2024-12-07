@@ -50,7 +50,9 @@ const ShowBrandsList: React.FC<IProps> = ({ brands, accessToken }) => {
                 />
               </TableCell>
               <TableCell className="text-center text-xs sm:text-sm">
-                {brand.title}
+                <a href={`/brands/${brand.slug}`} target="_blank">
+                  {brand.title}
+                </a>
               </TableCell>
               <TableCell className="text-center text-xs sm:text-sm">
                 {DateToJalali({ date: brand.updatedAt })}

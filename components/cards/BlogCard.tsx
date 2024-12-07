@@ -27,7 +27,7 @@ const BlogCard = ({ title, slug, thumbnail, updatedAt }: IBlog) => {
         <h3 className="text-slate-700 dark:text-white font-medium mb-2 sm:mb-3">
           {title}
         </h3>
-        <p className="text-primary text-sm font-thin">
+        <p className="text-primary text-sm font-thin mb-0">
           <DateToJalali date={updatedAt} />
         </p>
       </div>

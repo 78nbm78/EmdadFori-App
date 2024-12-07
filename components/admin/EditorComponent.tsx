@@ -65,13 +65,11 @@ const EditorComponent: React.ForwardRefRenderFunction<
         ],
         importcss_append: true,
         file_picker_callback: (callback, value, meta) => {
-          // Handle only image uploads
           if (meta.filetype === "image") {
             const inputEl = document.createElement("input");
             inputEl.setAttribute("type", "file");
             inputEl.setAttribute("accept", "image/*");
 
-            // Listen for file selection
             inputEl.onchange = async () => {
               if (inputEl.files && inputEl.files.length > 0) {
                 const file = inputEl.files[0];
@@ -79,7 +77,6 @@ const EditorComponent: React.ForwardRefRenderFunction<
                 formData.append("file", file);
 
                 try {
-                  // Make a request to your API endpoint for image upload
                   const response = await fetch(
                     `${process.env.NEXT_PUBLIC_URL}/api/upload`,
                     {
@@ -90,30 +87,19 @@ const EditorComponent: React.ForwardRefRenderFunction<
 
                   if (response.ok) {
                     const data = await response.json();
-                    callback(data.url, { alt: "My alt text" });
+                    const imageUrl = data.location || data.url;
+                    callback(imageUrl, { alt: "Uploaded Image" });
                   } else {
-                    // Handle error response from the server
                     console.error("Image upload failed:", response.statusText);
-                    callback("", { alt: "Failed to upload image" });
                   }
                 } catch (error) {
-                  // Handle network or other errors
                   console.error("Image upload failed:", error);
-                  callback("", { alt: "Failed to upload image" });
                 }
               }
             };
 
-            // Trigger the file selection dialog
             inputEl.click();
           }
-
-          // check uploaded file format the call the callback
-          // if (meta.filetype === 'file')
-          // if (meta.filetype === 'image')
-          // if (meta.filetype === 'media') {
-          //     callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
-          // }
         },
         images_upload_url: `${process.env.NEXT_PUBLIC_URL}/api/upload`,
         templates: customTemplates,

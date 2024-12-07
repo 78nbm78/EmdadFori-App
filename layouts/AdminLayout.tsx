@@ -41,7 +41,7 @@ const AdminLayout = async ({ children }: IProps) => {
           </div>
         </main>
 
-        <footer>
+        <footer className="mb-4 mt-6 sm:mt-8">
           <div className="text-slate-600 text-start" dir="ltr">
             &copy; All rights reserved for EmdadFori co.
           </div>

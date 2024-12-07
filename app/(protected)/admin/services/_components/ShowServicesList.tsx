@@ -48,7 +48,9 @@ const ShowServicesList: React.FC<IProps> = ({ services, accessToken }) => {
                 />
               </TableCell>
               <TableCell className="text-center text-xs sm:text-sm">
-                {service.title}
+                <a href={`/services/${service.slug}`} target="_blank">
+                  {service.title}
+                </a>
               </TableCell>
               <TableCell className="text-center text-xs sm:text-sm">
                 {DateToJalali({ date: service.updatedAt })}

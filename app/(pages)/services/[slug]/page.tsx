@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageTitle from "@/components/shared/PageTitle";
 import MainLayout from "@/layouts/MainLayout";
 import { GetServiceBySlug } from "@/services/Services";
+import { notFound } from "next/navigation";
 
 interface IProps {
   params: { slug: string };
@@ -31,6 +32,8 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 const SingleServicePage = async ({ params }: IProps) => {
   const slug = params.slug;
   const service = await GetServiceBySlug({ slug: decodeURI(slug) });
+
+  if (!service) return notFound();
 
   const list = [
     { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },

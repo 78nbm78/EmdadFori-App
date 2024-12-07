@@ -2,6 +2,7 @@ import PageTitle from "@/components/shared/PageTitle";
 import MainLayout from "@/layouts/MainLayout";
 import { GetBrandBySlug } from "@/services/Brands";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 interface IProps {
   // params: Promise<{ slug: string }>
@@ -32,6 +33,8 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 const SingleBrandPage = async ({ params }: IProps) => {
   const slug = params.slug;
   const brand = await GetBrandBySlug({ slug: decodeURI(slug) });
+
+  if (!brand) return notFound();
 
   const list = [
     { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },

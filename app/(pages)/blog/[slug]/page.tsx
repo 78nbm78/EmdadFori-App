@@ -3,6 +3,7 @@ import { IBlogType } from "@/interfaces/Blog";
 import MainLayout from "@/layouts/MainLayout";
 import { GetBlogBySlug } from "@/services/Blog";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 // import type { Metadata } from 'next'
 
 interface IProps {
@@ -31,6 +32,8 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 const SingleBlogPage = async ({ params }: IProps) => {
   const slug = params.slug;
   const blog = await GetBlogBySlug({ slug: decodeURI(slug) });
+
+  if (!blog) return notFound();
 
   const list = [
     { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },

@@ -50,7 +50,9 @@ const ShowBlogList: React.FC<IProps> = ({ blogs, accessToken }) => {
                 />
               </TableCell>
               <TableCell className="text-center text-xs sm:text-sm">
-                {blog.title}
+                <a href={`/blog/${blog.slug}`} target="_blank">
+                  {blog.title}
+                </a>
               </TableCell>
               <TableCell className="text-center text-xs sm:text-sm">
                 {DateToJalali({ date: blog.updatedAt })}

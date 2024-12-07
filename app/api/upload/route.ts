@@ -97,6 +97,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: "فایل با موفقیت آپلود شد.",
       url: fileUrl,
+      location: fileUrl,
     });
   } catch (error) {
     console.error("Error uploading image:", error);

@@ -15,7 +15,10 @@ const AdminEditBrandPage = async ({ params }: IProps) => {
 
   return (
     <AdminLayout>
-      <AdminPageTitle title={`ویرایش ${brand?.data?.title}`} description={brand?.data?.description} />
+      <AdminPageTitle
+        title={`ویرایش ${brand?.data?.title}`}
+        description={brand?.data?.description}
+      />
 
       <section>
         <Card>
