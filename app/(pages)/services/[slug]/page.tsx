@@ -56,7 +56,10 @@ const SingleServicePage = async ({ params }: IProps) => {
 
       <section className="wrapper">
         <div className="container">
-          slug = {decodeURI(service?.data?.slug || "")}
+          <div
+            className="single-content"
+            dangerouslySetInnerHTML={{ __html: `${service?.data?.content}` }}
+          ></div>
         </div>
       </section>
     </MainLayout>

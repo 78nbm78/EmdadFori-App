@@ -83,7 +83,12 @@ const SingleBlogPage = async ({ params }: IProps) => {
       />
 
       <section className="wrapper">
-        <div className="container">SingleBlogPage</div>
+        <div className="container">
+          <div
+            className="single-content"
+            dangerouslySetInnerHTML={{ __html: `${blog?.data?.content}` }}
+          ></div>
+        </div>
       </section>
 
       <script

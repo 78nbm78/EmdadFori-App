@@ -28,7 +28,7 @@ const ShowServicesList: React.FC<IProps> = ({ services, accessToken }) => {
         <TableRow>
           <TableHead className="text-start">عکس شاخص</TableHead>
           <TableHead className="text-center">عنوان</TableHead>
-          <TableHead className="text-center">تاریخ أخرین ویرایش</TableHead>
+          <TableHead className="text-center">تاریخ آخرین ویرایش</TableHead>
           <TableHead className="text-center">تعداد کامنت ها</TableHead>
           <TableHead className="text-center">وضعیت انتشار</TableHead>
           <TableHead className="text-center">اقدامات</TableHead>

@@ -56,7 +56,12 @@ const SingleBrandPage = async ({ params }: IProps) => {
       />
 
       <section className="wrapper">
-        <div className="container">slug = {decodeURI(slug)}</div>
+        <div className="container">
+          <div
+            className="single-content"
+            dangerouslySetInnerHTML={{ __html: `${brand?.data?.content}` }}
+          ></div>
+        </div>
       </section>
     </MainLayout>
   );
