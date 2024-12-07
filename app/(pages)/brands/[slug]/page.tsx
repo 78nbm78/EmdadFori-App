@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   };
 }
 
-const SingleBrandPage: React.FC<IProps> = async ({ params }) => {
+const SingleBrandPage = async ({ params }: IProps) => {
   const slug = params.slug;
   const brand = await GetBrandBySlug({ slug: decodeURI(slug) });
 

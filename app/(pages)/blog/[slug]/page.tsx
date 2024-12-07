@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   }
 }
 
-const SingleBlogPage: React.FC<IProps> = async ({ params }) => {
+const SingleBlogPage= async ({ params }: IProps) => {
   const slug = params.slug;
   const blog = await GetBlogBySlug({ slug: decodeURI(slug) });
 

@@ -6,11 +6,11 @@ export const IExpert = z.object({
   expertId: z.number(),
   firstName: z
     .string({ message: "عنوان صفحه را وارد کنید" })
-    .min(5, { message: "نام باید حداقل ۵ کاراکتر باشد" })
+    .min(2, { message: "نام باید حداقل ۵ کاراکتر باشد" })
     .max(100, { message: "نام نباید بیشتر از ۱۰۰ کاراکتر باشد" }),
   lastName: z
     .string({ message: "عنوان صفحه را وارد کنید" })
-    .min(5, { message: "نام خانوادگی باید حداقل ۵ کاراکتر باشد" })
+    .min(2, { message: "نام خانوادگی باید حداقل ۵ کاراکتر باشد" })
     .max(100, { message: "نام خانوادگی نباید بیشتر از ۱۰۰ کاراکتر باشد" }),
   nationalCode: z
     .string({ message: "لطفا کد ملی خود را وارد کنید" })
