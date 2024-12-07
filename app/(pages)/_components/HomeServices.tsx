@@ -17,7 +17,7 @@ const HomeServices = ({ services }: IProps) => {
           <hr className="custom-hr" />
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {services ? (
+          {services?.length ? (
             services.map((service) => (
               <Link
                 key={service.id}

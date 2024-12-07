@@ -1,10 +1,12 @@
-import { GetBrands } from "@/services/Brands";
+import { IBrandType } from "@/interfaces/Brand";
 import Image from "next/image";
 import Link from "next/link";
 
-const HomeBrands = async () => {
-  const brands = await GetBrands();
+interface IProps {
+  brands: IBrandType[];
+}
 
+const HomeBrands = ({ brands }: IProps) => {
   return (
     <section className="wrapper">
       <div className="container">
@@ -15,8 +17,8 @@ const HomeBrands = async () => {
           <hr className="custom-hr !mb-0" />
         </div>
         <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
-          {brands?.data?.length &&
-            brands.data.map((brand) => (
+          {brands?.length &&
+            brands.map((brand) => (
               <Link
                 key={brand.id}
                 href={`/brands/${brand.slug}`}
