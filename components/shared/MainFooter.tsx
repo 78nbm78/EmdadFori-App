@@ -5,15 +5,17 @@ import NeedBtn from "./footer/NeedBtn";
 import FooterBrands from "./footer/FooterBrands";
 import FooterGoldCard from "./footer/FooterGoldCard";
 import FooterContact from "./footer/FooterContact";
-import { GetServices } from "@/services/Services";
-import { GetBrands } from "@/services/Brands";
-import { GetBlogs } from "@/services/Blog";
+import { IServiceType } from "@/interfaces/Services";
+import { IBlogType } from "@/interfaces/Blog";
+import { IBrandType } from "@/interfaces/Brand";
 
-const MainFooter = async () => {
-  const services = await GetServices();
-  const brands = await GetBrands();
-  const blogs = await GetBlogs();
+interface IProps {
+  services: IServiceType[];
+  blogs: IBlogType[];
+  brands: IBrandType[];
+}
 
+const MainFooter = ({ services, blogs, brands }: IProps) => {
   return (
     <>
       <section className="wrapper pb-44 sm:pb-64 bg-stone-200 dark:bg-stone-800">
@@ -56,24 +58,28 @@ const MainFooter = async () => {
             <div className="w-full lg:w-1/2 xl:w-1/3 sm:px-3">
               <p className="font-bold text-white mb-4">خدمات امداد فوری</p>
               <ul className="grid grid-cols-2 gap-4">
-                {services?.data?.map((service) => (
-                  <li key={service.id}>
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="font-light text-white/80 transition hover:text-primary"
-                    >
-                      {service.title}
-                    </Link>
-                  </li>
-                ))}
+                {services?.length ? (
+                  services.map((service) => (
+                    <li key={service.id}>
+                      <Link
+                        href={`/services/${service.slug}`}
+                        className="font-light text-white/80 transition hover:text-primary"
+                      >
+                        {service.title}
+                      </Link>
+                    </li>
+                  ))
+                ) : (
+                  <li>موردی یافت نشد.</li>
+                )}
               </ul>
             </div>
 
             <div className="w-full lg:w-1/2 xl:w-5/12 sm:px-3">
               <p className="font-bold text-white mb-4">مقاله های مفید</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {blogs?.data?.length ? (
-                  blogs.data.map((blog) => (
+                {blogs?.length ? (
+                  blogs.map((blog) => (
                     <li key={blog.id}>
                       <Link
                         href={`/blog/${blog.slug}`}
@@ -94,7 +100,7 @@ const MainFooter = async () => {
             </div>
           </div>
 
-          <FooterBrands brands={brands?.data || []} />
+          <FooterBrands brands={brands || []} />
 
           <hr className="my-8 md:my-12 h-1 w-full bg-white/20 rounded-lg border-0" />
 

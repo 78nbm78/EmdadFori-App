@@ -7,7 +7,7 @@ interface IProps {
   children: ReactNode;
 }
 
-const ApplicantLayout: React.FC<IProps> = async ({ children }) => {
+const ApplicantLayout = async ({ children }: IProps) => {
   const token = await getCookieByKey("token");
   const jwt = await JwtDecodedValue({ tokenValue: token });
   if (!jwt || jwt?.role !== "APPLICANT") redirect("/auth");

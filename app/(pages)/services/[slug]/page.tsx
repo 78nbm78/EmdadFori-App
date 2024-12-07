@@ -51,6 +51,7 @@ const SingleServicePage = async ({ params }: IProps) => {
       <PageTitle
         title={service?.data?.googleTitle || service?.data?.title || ""}
         list={list}
+        smallTitle={true}
       />
 
       <section className="wrapper">

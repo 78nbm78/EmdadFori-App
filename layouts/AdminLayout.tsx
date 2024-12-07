@@ -10,7 +10,7 @@ interface IProps {
   children: ReactNode;
 }
 
-const AdminLayout: React.FC<IProps> = async ({ children }) => {
+const AdminLayout = async ({ children }: IProps) => {
   const token = await getCookieByKey("token");
   const jwt = await JwtDecodedValue({ tokenValue: token });
   if (!jwt || jwt?.role !== "ADMIN") redirect("/auth");

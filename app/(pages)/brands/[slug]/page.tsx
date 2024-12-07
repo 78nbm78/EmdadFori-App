@@ -52,6 +52,7 @@ const SingleBrandPage = async ({ params }: IProps) => {
       <PageTitle
         title={brand?.data?.googleTitle || brand?.data?.title || ""}
         list={list}
+        smallTitle={true}
       />
 
       <section className="wrapper">

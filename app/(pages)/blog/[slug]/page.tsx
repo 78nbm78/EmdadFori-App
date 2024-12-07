@@ -76,7 +76,11 @@ const SingleBlogPage = async ({ params }: IProps) => {
 
   return (
     <MainLayout>
-      <PageTitle title={blog?.data?.title || ""} list={list as IBlogType[]} />
+      <PageTitle
+        title={blog?.data?.title || ""}
+        list={list as IBlogType[]}
+        smallTitle={true}
+      />
 
       <section className="wrapper">
         <div className="container">SingleBlogPage</div>
