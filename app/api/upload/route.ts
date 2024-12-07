@@ -1,10 +1,10 @@
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuid } from "uuid";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import sharp from "sharp";
-import { AdminAuthChecker } from "@/utils/AdminAuthChecker";
+// import { AdminAuthChecker } from "@/utils/AdminAuthChecker";
 
 // Initialize S3 Client
 const s3Client = new S3Client({
@@ -43,12 +43,12 @@ async function uploadImageToS3(
 // API Route Handler
 export async function POST(request: NextRequest) {
   try {
-    const checkAuth = await AdminAuthChecker(request);
-    if (!checkAuth)
-      return NextResponse.json(
-        { type: "ERROR", message: "Unauthorized!" },
-        { status: 401 },
-      );
+    // const checkAuth = await AdminAuthChecker(request);
+    // if (!checkAuth)
+    //   return NextResponse.json(
+    //     { type: "ERROR", message: "Unauthorized!" },
+    //     { status: 401 },
+    //   );
 
     // Parse the incoming request form data
     const formData = await request.formData();

@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "emdadfori.storage.c2.liara.space",
       },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
     ],
   },
   // async redirects() {
