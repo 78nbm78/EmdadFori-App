@@ -11,7 +11,7 @@ interface IProps {
 
 const AdminEditBrandPage = async ({ params }: IProps) => {
   const token = await getCookieByKey("token");
-  const brand = await GetBrandBySlug({ slug: params.slug });
+  const brand = await GetBrandBySlug({ slug: decodeURI(params.slug) });
 
   return (
     <AdminLayout>

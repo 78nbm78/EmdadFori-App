@@ -30,7 +30,10 @@ function DeleteBrandBtn({ pageSlug, pageTitle, accessToken }: IProps) {
 
   async function deleteBrand() {
     try {
-      const response = await DeleteBrandBySlug({ accessToken, pageSlug });
+      const response = await DeleteBrandBySlug({
+        accessToken,
+        pageSlug: decodeURI(pageSlug),
+      });
 
       if (!response || response.type === "ERROR") {
         toast({

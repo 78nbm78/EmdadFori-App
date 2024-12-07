@@ -9,7 +9,7 @@ interface IProps {
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const slug = (await params).slug;
-  const brand = await GetBrandBySlug({ slug });
+  const brand = await GetBrandBySlug({ slug: decodeURI(slug) });
 
   return {
     title: brand?.data?.googleTitle || brand?.data?.title,
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 
 const SingleBrandPage: React.FC<IProps> = async ({ params }) => {
   const slug = (await params).slug;
-  const brand = await GetBrandBySlug({ slug });
+  const brand = await GetBrandBySlug({ slug: decodeURI(slug) });
 
   const list = [
     { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },

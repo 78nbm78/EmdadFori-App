@@ -9,7 +9,7 @@ interface IProps {
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const slug = (await params).slug;
-  const service = await GetServiceBySlug({ slug });
+  const service = await GetServiceBySlug({ slug: decodeURI(slug) });
 
   return {
     title: service?.data?.googleTitle || service?.data?.title,
@@ -28,9 +28,9 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   };
 }
 
-const SingleServicePage: React.FC<IProps> = async ({ params }) => {
+const SingleServicePage = async ({ params }: IProps) => {
   const slug = (await params).slug;
-  const service = await GetServiceBySlug({ slug });
+  const service = await GetServiceBySlug({ slug: decodeURI(slug) });
 
   const list = [
     { id: 1, title: "امداد فوری", slug: `${process.env.NEXT_PUBLIC_URL}` },

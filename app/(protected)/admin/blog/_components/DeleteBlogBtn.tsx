@@ -30,7 +30,10 @@ function DeleteBlogBtn({ pageSlug, pageTitle, accessToken }: IProps) {
 
   async function deleteBlog() {
     try {
-      const response = await DeleteBlogBySlug({ accessToken, pageSlug });
+      const response = await DeleteBlogBySlug({
+        accessToken,
+        pageSlug: decodeURI(pageSlug),
+      });
 
       if (!response || response.type === "ERROR") {
         toast({
