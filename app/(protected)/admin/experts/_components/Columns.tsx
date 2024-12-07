@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { DateToJalali } from "@/utils/DateToJalali";
-import { IExpertList } from "@/interfaces/Experts";
 import ActiveExpertBtn from "./ActiveExpertBtn";
 import DeActiveExpertBtn from "./DeActiveExpertBtn";
+import { IExpertType } from "@/interfaces/Experts";
 
 export const columns = ({ accessToken }: { accessToken: string }) => {
-  const columns: ColumnDef<IExpertList>[] = [
+  const columns: ColumnDef<IExpertType>[] = [
     {
       accessorKey: "firstName",
       header: "نام",
@@ -123,7 +123,7 @@ export const columns = ({ accessToken }: { accessToken: string }) => {
   return columns;
 };
 
-// export const columns: ColumnDef<IExpertList>[] = [
+// export const columns: ColumnDef<IExpertType>[] = [
 //   {
 //     accessorKey: "firstName",
 //     header: "نام",

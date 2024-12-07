@@ -1,11 +1,11 @@
 "use client";
 
-import { IExpertList } from "@/interfaces/Experts";
+import { IExpertType } from "@/interfaces/Experts";
 import { columns } from "./Columns";
 import { DataTable } from "./DataTable";
 
 interface IProps {
-  experts: IExpertList[] | undefined;
+  experts: IExpertType[] | undefined;
   accessToken: string;
 }
 

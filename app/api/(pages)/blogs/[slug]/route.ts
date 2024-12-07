@@ -5,10 +5,10 @@ import { IBlog, IBlogType } from "@/interfaces/Blog";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   try {
-    const slug = (await params).slug;
+    const slug = params.slug;
 
     const blog = await db.blogs.findUnique({
       where: { slug: decodeURI(slug) },
@@ -40,10 +40,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   try {
-    const slug = (await params).slug;
+    const slug = params.slug;
 
     const checkAuth = await AdminAuthChecker(request);
     if (!checkAuth)
@@ -100,10 +100,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   try {
-    const slug = (await params).slug;
+    const slug = params.slug;
 
     const checkAuth = await AdminAuthChecker(request);
     if (!checkAuth)

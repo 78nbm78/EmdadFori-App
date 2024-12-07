@@ -2,33 +2,34 @@ import PageTitle from "@/components/shared/PageTitle";
 import { IBlogType } from "@/interfaces/Blog";
 import MainLayout from "@/layouts/MainLayout";
 import { GetBlogBySlug } from "@/services/Blog";
+import type { Metadata } from "next";
 // import type { Metadata } from 'next'
 
 interface IProps {
-  params: Promise<{ slug: string }>;
+  // params: Promise<{ slug: string }>
+  params: { slug: string };
 }
 
-// export async function generateMetadata({ params }: IProps): Promise<Metadata> {
-//   const slug = (await params).slug;
-//   const blog = await fetch(`https://.../${slug}`).then((res) => res.json())
+export async function generateMetadata({ params }: IProps): Promise<Metadata> {
+  const blog = await GetBlogBySlug({ slug: decodeURI(params.slug) });
 
-//   return {
-//     title: blog?.data?.googleTitle || blog?.data?.title,
-//     description: blog?.data?.description,
-//     openGraph: {
-//       title: blog?.data?.googleTitle || blog?.data?.title,
-//       description: blog?.data?.description,
-//       url: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
-//       images: [blog?.data?.thumbnail || "/images/default-cover.jpg"],
-//     },
-//     alternates: {
-//       canonical: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
-//     },
-//   }
-// }
+  return {
+    title: blog?.data?.googleTitle || blog?.data?.title,
+    description: blog?.data?.description,
+    openGraph: {
+      title: blog?.data?.googleTitle || blog?.data?.title,
+      description: blog?.data?.description,
+      url: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
+      images: [blog?.data?.thumbnail || "/images/default-cover.jpg"],
+    },
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_URL}/blog/${blog?.data?.slug}`,
+    },
+  }
+}
 
 const SingleBlogPage: React.FC<IProps> = async ({ params }) => {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const blog = await GetBlogBySlug({ slug: decodeURI(slug) });
 
   const list = [

@@ -4,11 +4,11 @@ import MainLayout from "@/layouts/MainLayout";
 import { GetServiceBySlug } from "@/services/Services";
 
 interface IProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const service = await GetServiceBySlug({ slug: decodeURI(slug) });
 
   return {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 }
 
 const SingleServicePage = async ({ params }: IProps) => {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const service = await GetServiceBySlug({ slug: decodeURI(slug) });
 
   const list = [

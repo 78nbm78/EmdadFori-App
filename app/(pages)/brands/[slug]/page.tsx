@@ -4,11 +4,12 @@ import { GetBrandBySlug } from "@/services/Brands";
 import type { Metadata } from "next";
 
 interface IProps {
-  params: Promise<{ slug: string }>;
+  // params: Promise<{ slug: string }>
+  params: { slug: string };
 }
 
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const brand = await GetBrandBySlug({ slug: decodeURI(slug) });
 
   return {
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
 }
 
 const SingleBrandPage: React.FC<IProps> = async ({ params }) => {
-  const slug = (await params).slug;
+  const slug = params.slug;
   const brand = await GetBrandBySlug({ slug: decodeURI(slug) });
 
   const list = [

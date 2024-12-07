@@ -3,10 +3,10 @@ import db from "@/lib/db";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> },
+  { params }: { params: { slug: string } },
 ) {
   try {
-    const slug = (await params).slug; // 'a', 'b', or 'c'
+    const slug = params.slug; // 'a', 'b', or 'c'
 
     const service = await db.services.findUnique({
       where: { slug: decodeURI(slug) },
