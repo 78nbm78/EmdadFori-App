@@ -56,7 +56,7 @@ function DeActiveExpertBtn({ expertId, username, accessToken }: IProps) {
 
   const handleDeActivation = () => {
     deActiveExpert();
-  }
+  };
 
   return (
     <AlertDialog>

@@ -7,7 +7,7 @@ interface IProps {
   children: ReactNode;
 }
 
-const ExpertLayout: React.FC<IProps> = async ({ children }) => {
+const ExpertLayout = async ({ children }: IProps) => {
   const token = await getCookieByKey("token");
   const jwt = await JwtDecodedValue({ tokenValue: token });
   if (!jwt || jwt?.role !== "EXPERT") redirect("/auth");

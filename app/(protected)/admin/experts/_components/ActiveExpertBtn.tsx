@@ -55,8 +55,8 @@ function ActiveExpertBtn({ expertId, username, accessToken }: IProps) {
   }
 
   const handleActivation = () => {
-    activeExpert()
-  }
+    activeExpert();
+  };
 
   return (
     <AlertDialog>

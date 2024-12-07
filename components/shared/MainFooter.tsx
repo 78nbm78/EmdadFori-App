@@ -6,16 +6,16 @@ import FooterBrands from "./footer/FooterBrands";
 import FooterGoldCard from "./footer/FooterGoldCard";
 import FooterContact from "./footer/FooterContact";
 import { IServiceType } from "@/interfaces/Services";
-import { IBlogType } from "@/interfaces/Blog";
 import { IBrandType } from "@/interfaces/Brand";
+import { IBlogType } from "@/interfaces/Blog";
 
 interface IProps {
   services: IServiceType[];
-  blogs: IBlogType[];
   brands: IBrandType[];
+  blogs: IBlogType[];
 }
 
-const MainFooter = ({ services, blogs, brands }: IProps) => {
+const MainFooter = ({ services, brands, blogs }: IProps) => {
   return (
     <>
       <section className="wrapper pb-44 sm:pb-64 bg-stone-200 dark:bg-stone-800">
